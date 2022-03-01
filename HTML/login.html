@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <!-- Required Meta Tags -->
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link
+      rel="icon"
+      href="https://storage.googleapis.com/www.increff.com/img/favicon.png?v=2"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/static.increff.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+  </head>
+
+  <!-- Sign In Container -->
+
+  <body>
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+      <div
+        class="container col-10 col-lg-4 col-md-6 col-sm-7 p-4 border rounded shadow"
+      >
+        <div class="row justify-content-center">
+          <img src="/resources/brand-logo.png" alt="Increff Logo" />
+        </div>
+        <div class="row justify-content-center">
+          <h1 class="text-center mt-2">Login</h1>
+        </div>
+        <!-- Login Form -->
+        <form id="loginform">
+          <div class="form-group">
+            <label for="Email" class="font-weight-bold">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              id="email"
+              placeholder="example@increff.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="Password" class="font-weight-bold">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              id="password"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            id="submit-button"
+            class="btn btn-outline-primary d-block mx-auto"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://storage.googleapis.com/static.increff.com/jquery/3.6.0/jquery-3.6.0.min.js"></script>
+    <script src="/javascipt/login.js"></script>
+    <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+[
+    {
+        "id" : "1",
+        "email" : "naman.goyal@increff.com",
+        "password" : "password1234"
+    },
+    {
+        "id" : "2",
+        "email" : "manasa.pakala@increff.com",
+        "password" : "password1234"
+    },
+    {
+        "id" : "3",
+        "email" : "kishan.kumar@increff.com",
+        "password" : "password1234"
+    },
+    {
+        "id" : "4",
+        "email" : "aditya.raj@increff.com",
+        "password" : "password1234"
+    },
+    {
+        "id" : "5",
+        "email" : "meesala.shiva@increff.com",
+        "password" : "password1234"
+    }
+]
