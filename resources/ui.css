@@ -1,0 +1,22 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+body {
+  position: relative;
+}
+
+body::after {
+  content: "";
+  display: block;
+  height: 30px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
