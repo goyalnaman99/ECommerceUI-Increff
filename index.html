@@ -95,13 +95,16 @@
                 <div class="input-group">
                   <input
                     type="number"
+                    min="1"
+                    step="1"
+                    default="1"
                     class="form-control"
                     placeholder="Enter Quantity"
                     aria-label="Enter Quantity"
                     aria-describedby="basic-addon2"
                   />
                   <div class="input-group-append">
-                    <button type="button" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary">
                       <i
                         class="material-icons"
                         style="font-size: large;"
@@ -124,9 +127,8 @@
 
     <!-- footer -->
     <footer
-      class="footer mt-auto bg-dark"
+      class="footer bg-dark"
       style="
-        position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;
