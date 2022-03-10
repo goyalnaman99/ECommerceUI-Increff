@@ -3,13 +3,13 @@
     "id": "1",
     "brand": "Roadster",
     "category": "T-Shirt",
-    "color": "Red",
+    "color": "Maroon",
     "imageUrl": "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/2308267/2018/1/29/11517216335231-Roadster-Men-Maroon-Printed-Round-Neck-T-shirt-5591517216335098-1.jpg",
     "mrp": 599,
     "name": "Typography Cotton T-Shirt",
     "size": "XS",
     "styleId": "1297125-002",
-    "description": "Some description text"
+    "description": "Maroon printed waist length T-shirt, has a round neck, short sleeves"
   },
   {
     "id": "2",
@@ -21,7 +21,7 @@
     "name": "Printed Pure Cotton T-Shirt",
     "size": "M",
     "styleId": "1297125-002",
-    "description": "Some description text"
+    "description": "Maroon printed waist length T-shirt, has a round neck, short sleeves"
   },
   {
     "id": "3",
@@ -33,7 +33,7 @@
     "name": "Polo Collar T-Shirt",
     "size": "L",
     "styleId": "1297125-002",
-    "description": "Some description text"
+    "description": "Maroon printed waist length T-shirt, has a round neck, short sleeves"
   },
   {
     "id": "4",

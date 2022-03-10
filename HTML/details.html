@@ -1,114 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Product Details</title>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="-1" />
-    <meta http-equiv="cache-control" content="no-cache" />
-    <link
-      rel="icon"
-      href="https://storage.googleapis.com/www.increff.com/img/favicon.png?v=2"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link rel="stylesheet" href="/resources/ui.css" />
-  </head>
 
-  <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/index.html">
-          <img
-            src="/resources/brand-logo-3-removebg.png"
-            style="filter: brightness(0) invert(1)"
-            height="50px"
-            width="50px"
-            alt="Increff Logo"
-          />
-        </a>
-        <ul class="navbar-nav">
-          <div class="row">
-            <li class="nav-item">
-              <a class="nav-link position-relative" href="/HTML/upload.html">
-                <i
-                  class="material-icons mr-3"
-                  data-tooltip="tooltip"
-                  title="Upload Order CSV"
-                  >upload_file</i
-                >
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i
-                  class="material-icons mr-3"
-                  data-toggle="tooltip"
-                  title="Cart"
-                  >shopping_cart</i
-                >
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i
-                  class="material-icons mr-2"
-                  id="logout"
-                  data-toggle="tooltip"
-                  title="Logout"
-                >
-                  logout
-                </i>
-              </a>
-            </li>
-          </div>
-        </ul>
+<head>
+  <title>Product Details</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <link rel="icon" href="https://storage.googleapis.com/www.increff.com/img/favicon.png?v=2" type="image/x-icon" />
+  <link rel="stylesheet"
+    href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="/resources/ui.css" />
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index.html">
+        <img src="/resources/brand-logo-3-removebg.png" style="filter: brightness(0) invert(1)" height="50px"
+          width="50px" alt="Increff Logo" />
+      </a>
+      <ul class="navbar-nav">
+        <div class="row">
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="/HTML/upload.html">
+              <i class="material-icons mr-3" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="material-icons mr-3" data-toggle="tooltip" title="Cart">shopping_cart</i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="material-icons mr-2" id="logout" data-toggle="tooltip" title="Logout">
+                logout
+              </i>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- product details -->
+  <div class="container" id="product-details-container">
+    <div class="row">
+      <div class="col-12 col-lg-6 col-xl-6 col-md-6 mt-4 text-center" id="product-image">
+        <img src="" alt="Image Not Available" />
       </div>
-    </nav>
-
-    <!-- product details -->
-    <div class="container">
-      <div class="row">
-        <div class="col-6 mt-4 text-center">
-          <img
-            src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/2308267/2018/1/29/11517216335231-Roadster-Men-Maroon-Printed-Round-Neck-T-shirt-5591517216335098-1.jpg"
-            alt="Image Not Available"
-          />
+      <div class="col-12 col-lg-6 col-xl-6 col-md-6 mt-4 text-left">
+        <h3 id="product-brand"></h3>
+        <h4 id="product-name" class="text-secondary"></h4>
+        <hr />
+        <h3 id="product-price"></h3>
+        <h6 class="text-success">inclusive of all taxes</h6>
+        <h4 id="product-size"></h4>
+        <hr />
+        <div class="row m-auto">
+          <h5>PRODUCT DETAILS</h5>
+          <i class="material-icons ml-2">info</i>
         </div>
-        <div class="col-6 mt-4 text-left">
-          <h3 id="product-brand">Roadster</h3>
-          <h4 class="text-secondary">Typography Cotton T-Shirt</h4>
-          <hr />
-          <h3 id="product-price">Rs. 599</h3>
-          <h6 class="text-success">inclusive of all taxes</h6>
-          <h4 id="product-size">Size : XS</h4>
-          <hr />
-          <div class="row m-auto">
-            <h5 class="d-inline">PRODUCT DETAILS</h5>
-            <i class="material-icons ml-2">info</i>
-          </div>
-        </div>
+        <p id="product-description"></p>
       </div>
     </div>
+  </div>
 
-    <!-- footer -->
-    <footer class="footer bg-dark">
-      <span class="text-white" id="datetime"></span>
-    </footer>
+  <!-- footer -->
+  <footer class="footer bg-dark">
+    <span class="text-white" id="datetime"></span>
+  </footer>
 
-    <!-- scripts -->
-    <script src="https://storage.googleapis.com/static.increff.com/jquery/3.6.0/jquery-3.6.0.min.js"></script>
-    <script src="/javascipt/products.js"></script>
-    <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <!-- scripts -->
+  <script src="https://storage.googleapis.com/static.increff.com/jquery/3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="/javascipt/app.js"></script>
+  <script src="/javascipt/details.js"></script>
+  <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

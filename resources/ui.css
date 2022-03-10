@@ -20,3 +20,11 @@ footer {
   width: 100%;
   text-align: center;
 }
+
+.cursor {
+  cursor: pointer;
+}
+
+input{
+  text-align: center !important;
+}

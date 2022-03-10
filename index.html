@@ -1,139 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Products</title>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="-1" />
-    <meta http-equiv="cache-control" content="no-cache" />
-    <link
-      rel="icon"
-      href="https://storage.googleapis.com/www.increff.com/img/favicon.png?v=2"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link rel="stylesheet" href="/resources/ui.css">
-  </head>
 
-  <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/index.html">
-          <img
-            src="/resources/brand-logo-3-removebg.png"
-            style="filter: brightness(0) invert(1)"
-            height="50px"
-            width="50px"
-            alt="Increff Logo"
-          />
-        </a>
-        <ul class="navbar-nav">
-          <div class="row">
-            <li class="nav-item">
-              <a class="nav-link position-relative" href="/HTML/upload.html">
-                <i
-                  class="material-icons mr-3"
-                  data-tooltip="tooltip"
-                  title="Upload Order CSV"
-                  >upload_file</i
-                >
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i
-                  class="material-icons mr-3"
-                  data-toggle="tooltip"
-                  title="Cart"
-                  >shopping_cart</i
-                >
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i
-                  class="material-icons mr-2"
-                  id="logout"
-                  data-toggle="tooltip"
-                  title="Logout">
-                  logout
-                </i>
-              </a>
-            </li>
-          </div>
-        </ul>
-      </div>
-    </nav>
+<head>
+  <title>Products</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <link rel="icon" href="https://storage.googleapis.com/www.increff.com/img/favicon.png?v=2" type="image/x-icon" />
+  <link rel="stylesheet"
+    href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="/resources/ui.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+</head>
 
-    <!-- product grid -->
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-      <div class="row">
-        <div class="card-deck">
-          <div class="col-12 col-md-4 col-lg-3 col-xl-3 p-4 d-none" id="firstProduct">
-            <div class="card" style="width: 18rem">
-              <img
-                src=""
-                class="card-img-top"
-                alt="Image Not Available"
-                id="product-image"
-              />
-              <div class="card-body">
-                <h5 id="product-brand"></h5>
-                <h6 class="text-secondary" id="product-name">
-                </h6>
-                <h6 id="product-price"></h6>
-                <h6 id="product-size"></h6>
-                <div class="input-group">
-                  <input
-                    type="number"
-                    min="1"
-                    step="1"
-                    default="1"
-                    class="form-control"
-                    placeholder="Enter Quantity"
-                    aria-label="Enter Quantity"
-                    aria-describedby="basic-addon2"
-                  />
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary">
-                      <i
-                        class="material-icons"
-                        style="font-size: large;"
-                        id="add-cart"
-                        data-toggle="tooltip"
-                        title="Add to Cart"
-                      >
-                      add_shopping_cart
-                      </i>
-                    </button>
-                    </button>
-                  </div>
+      <a class="navbar-brand" href="/index.html">
+        <img src="/resources/brand-logo-3-removebg.png" style="filter: brightness(0) invert(1)" height="50px"
+          width="50px" alt="Increff Logo" />
+      </a>
+      <ul class="navbar-nav">
+        <div class="row">
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="/HTML/upload.html">
+              <i class="material-icons mr-3" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="material-icons mr-3" data-toggle="tooltip" title="Cart">shopping_cart</i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="material-icons mr-2" id="logout" data-toggle="tooltip" title="Logout">
+                logout
+              </i>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- product grid -->
+  <div class="container-fluid mt-5 pt-5">
+    <div class="row">
+      <div class="card-deck">
+        <div class="col-12 col-md-4 col-lg-3 col-xl-3 p-3 d-none" id="firstProduct">
+          <div class="card" style="width: 18rem">
+            <img src="" class="card-img-top cursor" alt="Image Not Available" id="product-image" />
+            <div class="card-body text-center">
+              <h5 id="product-brand"></h5>
+              <h6 class="text-secondary" id="product-name"></h6>
+              <h6 id="product-price"></h6>
+              <h6 id="product-size"></h6>
+              <div class="input-group mb-2 text-center">
+                <div class="input-group-prepend">
+                  <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
+                </div>
+                <input type="number" id="qty_input" class="form-control form-control-sm disabled" disabled="true"
+                  value="1" step="1" min="1">
+                <div class="input-group-prepend">
+                  <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
                 </div>
               </div>
+              <button type="submit" class="btn btn-primary" id="add-cart">
+                Add To Cart
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  </div>
 
-    <!-- footer -->
-    <footer class="footer bg-dark">
-      <span class="text-white" id="datetime"></span>
-    </footer>
+  <!-- footer -->
+  <footer class="footer bg-dark">
+    <span class="text-white" id="datetime"></span>
+  </footer>
 
-    <!-- scripts -->
-    <script src="https://storage.googleapis.com/static.increff.com/jquery/3.6.0/jquery-3.6.0.min.js"></script>
-    <script src="/javascipt/products.js"></script>
-    <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <!-- scripts -->
+  <script src="https://storage.googleapis.com/static.increff.com/jquery/3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="/javascipt/app.js"></script>
+  <script src="/javascipt/products.js"></script>
+  <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
