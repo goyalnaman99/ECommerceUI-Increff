@@ -14,6 +14,8 @@
     href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link rel="stylesheet" href="/resources/ui.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 </head>
 
 <body>
@@ -52,7 +54,7 @@
   <div class="container" id="product-details-container">
     <div class="row">
       <div class="col-12 col-lg-6 col-xl-6 col-md-6 mt-4 text-center" id="product-image">
-        <img src="" alt="Image Not Available" />
+        <img class="img-fluid" src="" alt="Image Not Available" />
       </div>
       <div class="col-12 col-lg-6 col-xl-6 col-md-6 mt-4 text-left">
         <h3 id="product-brand"></h3>
@@ -61,6 +63,20 @@
         <h3 id="product-price"></h3>
         <h6 class="text-success">inclusive of all taxes</h6>
         <h4 id="product-size"></h4>
+        <hr />
+        <div class="input-group mb-2 text-center w-25">
+          <div class="input-group-prepend">
+            <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
+          </div>
+          <input type="number" id="qty_input" class="form-control form-control-sm disabled" disabled="true" value="1"
+            step="1" min="1">
+          <div class="input-group-prepend">
+            <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="add-cart">
+          Add To Cart
+        </button>
         <hr />
         <div class="row m-auto">
           <h5>PRODUCT DETAILS</h5>

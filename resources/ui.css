@@ -28,3 +28,7 @@ footer {
 input{
   text-align: center !important;
 }
+
+.img-thumbnail{
+  height: 10rem;
+}

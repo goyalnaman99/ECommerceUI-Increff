@@ -16,6 +16,26 @@ $.getJSON("/resources/inventory.json", function (products) {
   $("#product-price").text("Rs. " + product.mrp);
   $("#product-size").text("Size : " + product.size);
   $("#product-description").text(product.description);
+  $("#minus-btn").attr("id", "minus-btn" + product.id);
+  $("#plus-btn").attr("id", "plus-btn" + product.id);
+  $("#qty_input").attr("id", "qty_input" + product.id);
+  $("#add-cart").attr("id", "add-cart" + product.id);
+
+  //quantity increment/decrement
+  $("#plus-btn" + product.id).click(function () {
+    console.log("plus clicked");
+    $("#qty_input" + product.id).val(
+      parseInt($("#qty_input" + product.id).val()) + 1
+    );
+  });
+  $("#minus-btn" + product.id).click(function () {
+    $("#qty_input" + product.id).val(
+      parseInt($("#qty_input" + product.id).val()) - 1
+    );
+    if ($("#qty_input" + product.id).val() == 0) {
+      $("#qty_input" + product.id).val(1);
+    }
+  });
 });
 
 //init
