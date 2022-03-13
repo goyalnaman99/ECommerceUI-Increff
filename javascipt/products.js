@@ -18,9 +18,12 @@ $.getJSON("resources/inventory.json", function (products) {
     item.find("#product-size").text("Size : " + product.size);
     item.find("#minus-btn").attr("id", "minus-btn" + product.id);
     item.find("#plus-btn").attr("id", "plus-btn" + product.id);
-    item.find("#qty_input").attr("id", "qty_input" + product.id);
+    item
+      .find("#qty_input")
+      .attr("id", "qty_input" + product.id)
+      .val(getProductQuantity(product.id));
     item.find("#add-cart").attr("id", "add-cart" + product.id);
-    $(".card-deck").append(item);
+    $(".card-group").append(item);
 
     //Routing to Details
     $("#" + product.id)
@@ -31,18 +34,24 @@ $.getJSON("resources/inventory.json", function (products) {
 
     //quantity increment/decrement
     $("#plus-btn" + product.id).click(function () {
-      console.log("plus clicked");
+      // console.log("plus clicked");
       $("#qty_input" + product.id).val(
         parseInt($("#qty_input" + product.id).val()) + 1
       );
+      //adding to cart
+      const qty = Number($("#qty_input" + product.id).val());
+      addToCart(product.id, qty);
     });
     $("#minus-btn" + product.id).click(function () {
       $("#qty_input" + product.id).val(
         parseInt($("#qty_input" + product.id).val()) - 1
       );
-      if ($("#qty_input" + product.id).val() == 0) {
-        $("#qty_input" + product.id).val(1);
+      if ($("#qty_input" + product.id).val() <= 0) {
+        $("#qty_input" + product.id).val(0);
       }
+      //adding to cart
+      const qty = Number($("#qty_input" + product.id).val());
+      addToCart(product.id, qty);
     });
   });
 });

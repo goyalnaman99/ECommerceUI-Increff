@@ -34,7 +34,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/HTML/checkout.html">
               <i class="material-icons mr-3" data-toggle="tooltip" title="Cart">shopping_cart</i>
             </a>
           </li>
@@ -52,29 +52,26 @@
 
   <!-- product grid -->
   <div class="container-fluid mt-5 pt-5">
-    <div class="row">
-      <div class="card-deck">
+    <div class="row justify-content-center">
+      <div class="card-group">
         <div class="col-12 col-md-4 col-lg-3 col-xl-3 p-3 d-none" id="firstProduct">
-          <div class="card" style="width: 18rem">
+          <div class="card" style="width: 18rem;">
             <img src="" class="card-img-top cursor img-fluid" alt="Image Not Available" id="product-image" />
             <div class="card-body text-center">
               <h5 id="product-brand"></h5>
               <h6 class="text-secondary" id="product-name"></h6>
               <h6 id="product-price"></h6>
               <h6 id="product-size"></h6>
-              <div class="input-group mb-2 text-center">
+              <div class="input-group mb-2 text-center w-50 mx-auto">
                 <div class="input-group-prepend">
                   <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
                 </div>
-                <input type="number" id="qty_input" class="form-control form-control-sm" disabled="true"
-                  value="1" step="1" min="1">
+                <input type="number" id="qty_input" class="form-control form-control-sm" disabled="true" value="0"
+                  step="1" min="0">
                 <div class="input-group-prepend">
                   <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary" id="add-cart">
-                Add To Cart
-              </button>
             </div>
           </div>
         </div>
