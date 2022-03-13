@@ -28,18 +28,19 @@
                 <div class="row">
                     <li class="nav-item">
                         <a class="nav-link position-relative" href="/HTML/upload.html">
-                            <i class="material-icons mr-3" data-tooltip="tooltip"
+                            <i class="material-icons mr-3 text-white" data-tooltip="tooltip"
                                 title="Upload Order CSV">upload_file</i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <i class="material-icons mr-3" data-toggle="tooltip" title="Cart">shopping_cart</i>
+                            <i class="material-icons mr-3 text-white" data-toggle="tooltip"
+                                title="Cart">shopping_cart</i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <i class="material-icons mr-2" id="logout" data-toggle="tooltip" title="Logout">
+                            <i class="material-icons mr-2 text-white" id="logout" data-toggle="tooltip" title="Logout">
                                 logout
                             </i>
                         </a>
@@ -52,13 +53,13 @@
     <!-- checkout -->
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-8" id="cartContainer">
-                <h4 class="font-weight-bold">Cart Items</h4>
+            <div class="col-12 col-md-8" id="cartContainer">
+                <h4 class="font-weight-bold m-2">Cart Items</h4>
                 <div class="d-none" id="emptyCart">
                     <span class="d-block">Your Cart is Empty</span>
                     <a href="/index.html">Go to Products Page</a>
                 </div>
-                <div class="border rounded shadow d-none" id="firstCartItem">
+                <div class="border rounded shadow m-2 d-none" id="firstCartItem">
                     <div class="row m-0 p-2">
                         <img class="img-fluid img-thumbnail border-0" src="" alt="Image Not Available" />
                         <div class="col">
@@ -68,19 +69,26 @@
                                 <h6 id="product-size" class="text-secondary"></h6>
                                 <h6 id="product-price"></h6>
                                 <h6 id="product-quantity"></h6>
+                                <i class="material-icons d-flex justify-content-end cursor" id="delete"
+                                    data-toggle="tooltip" title="Remove Product from Cart">
+                                    delete
+                                </i>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <h4 class="font-weight-bold">Price Details</h3>
-                    <div class="border rounded shadow">
+            <div class="col-12 col-md-4" id="cartPrice">
+                <h4 class="font-weight-bold m-2">Price Details</h3>
+                    <div class="border rounded shadow m-2">
                         <div class="row m-0 p-2">
                             <div class="col">
-                                <h6 class="font-weight-bold">Total Items (<span id="total-items"></span>)</h6>
-                                <h6 class="text-secondary" id="subtotal"></h6>
+                                <h6 class="font-weight-bold">Total Items (<span id="totalItems"></span>)</h6>
+                                <span>Total MRP : <span id="totalMRP" class="justify-content-end"></span></span>
                             </div>
                         </div>
+                    </div>
+                    <div class="row ml-2">
+                        <button class="btn btn-outline-primary">Place Order</button>
                     </div>
             </div>
         </div>

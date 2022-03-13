@@ -15,7 +15,7 @@ $.getJSON("resources/inventory.json", function (products) {
       })
     );
     item.find("#product-name").text(product.name);
-    item.find("#product-price").text("Rs. " + product.mrp);
+    item.find("#product-price").text("Rs. " + product.mrp.toLocaleString());
     item.find("#product-size").text("Size : " + product.size);
     item.find("#minus-btn").attr("id", "minus-btn" + product.id);
     item.find("#plus-btn").attr("id", "plus-btn" + product.id);
