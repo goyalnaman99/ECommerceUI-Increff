@@ -3,6 +3,7 @@ $.getJSON("resources/inventory.json", function (products) {
   const dummy = $("#firstProduct");
 
   products.forEach((product) => {
+    console.log(product);
     const item = dummy.clone();
     item.removeClass("d-none");
     item.attr("id", product.id);
