@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Product Details</title>
+    <title>Checkout</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,39 +13,43 @@
     <link rel="stylesheet"
         href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/ui.css" />
 </head>
 
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/index.html">
-                <img src="/resources/brand-logo-3-removebg.png" style="filter: brightness(0) invert(1)" height="50px"
-                    width="50px" alt="Increff Logo" />
-            </a>
-            <ul class="navbar-nav">
-                <div class="row">
-                    <li class="nav-item">
-                        <a class="nav-link position-relative" href="/HTML/upload.html">
-                            <i class="material-icons mr-3 text-white" data-tooltip="tooltip"
-                                title="Upload Order CSV">upload_file</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="material-icons mr-3 text-white" data-toggle="tooltip"
-                                title="Cart">shopping_cart</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="material-icons mr-2 text-white" id="logout" data-toggle="tooltip" title="Logout">
-                                logout
-                            </i>
-                        </a>
-                    </li>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
+        <a class="navbar-brand" href="/index.html">
+            <img src="/resources/brand-logo-3-removebg.png" alt="Increff Logo" style="filter: brightness(0) invert(1)"
+                height="50px" width="50px">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/HTML/upload.html">
+                        <i class="material-icons text-white" data-tooltip="tooltip"
+                            title="Upload Order CSV">upload_file</i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/HTML/checkout.html">
+                        <i class="material-icons text-white" data-toggle="tooltip" title="Cart">shopping_cart</i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons text-white" id="logout" data-toggle="tooltip" title="Logout">
+                            logout
+                        </i>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -53,12 +57,18 @@
     <!-- checkout -->
     <div class="container">
         <div class="row">
+            <div class="d-none" id="emptyCart">
+                <span class="d-block">Your Cart is Empty</span>
+                <a href="/index.html">Go to Products Page</a>
+            </div>
             <div class="col-12 col-md-8" id="cartContainer">
-                <h4 class="font-weight-bold m-2">Cart Items</h4>
-                <div class="d-none" id="emptyCart">
-                    <span class="d-block">Your Cart is Empty</span>
-                    <a href="/index.html">Go to Products Page</a>
+                <div class="row ml-2 mr-2 mt-2 justify-content-between">
+                    <h4 class="font-weight-bold">Cart Items</h4>
+                    <i class="material-icons cursor" id="clearCart" data-toggle="tooltip" title="Clear Cart">
+                        remove_shopping_cart
+                    </i>
                 </div>
+                <hr class="mt-2">
                 <div class="border rounded shadow m-2 d-none" id="firstCartItem">
                     <div class="row m-0 p-2">
                         <img class="img-fluid img-thumbnail border-0" src="" alt="Image Not Available" />
@@ -68,17 +78,32 @@
                                 <h6 class="text-secondary" id="product-name"></h6>
                                 <h6 id="product-size" class="text-secondary"></h6>
                                 <h6 id="product-price"></h6>
-                                <h6 id="product-quantity"></h6>
-                                <i class="material-icons d-flex justify-content-end cursor" id="delete"
-                                    data-toggle="tooltip" title="Remove Product from Cart">
-                                    delete
-                                </i>
+                                <div class="row justify-content-between ml-0">
+                                    <div class="input-group mb-2 text-center w-25">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-dark btn-sm" id="minus-btn"><i
+                                                    class="fa fa-minus"></i></button>
+                                        </div>
+                                        <input type="number" id="qty_input"
+                                            class="form-control form-control-sm disabled" disabled="true" value="0"
+                                            step="1" min="0">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-dark btn-sm" id="plus-btn"><i
+                                                    class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                    <i class="material-icons cursor" id="delete" data-toggle="tooltip"
+                                        title="Remove Product from Cart">
+                                        delete
+                                    </i>
+                                </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-4" id="cartPrice">
                 <h4 class="font-weight-bold m-2">Price Details</h3>
+                    <hr>
                     <div class="border rounded shadow m-2">
                         <div class="row m-0 p-2">
                             <div class="col">

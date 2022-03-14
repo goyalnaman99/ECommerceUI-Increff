@@ -20,38 +20,41 @@
 
 <body>
   <!-- navbar -->
-  <nav class="navbar navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/index.html">
-        <img src="/resources/brand-logo-3-removebg.png" style="filter: brightness(0) invert(1)" height="50px"
-          width="50px" alt="Increff Logo" />
-      </a>
-      <ul class="navbar-nav">
-        <div class="row">
-          <li class="nav-item">
-            <a class="nav-link position-relative" href="/HTML/upload.html">
-              <i class="material-icons mr-3" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/HTML/checkout.html">
-              <i class="material-icons mr-3" data-toggle="tooltip" title="Cart">shopping_cart</i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="material-icons mr-2" id="logout" data-toggle="tooltip" title="Logout">
-                logout
-              </i>
-            </a>
-          </li>
-        </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
+    <a class="navbar-brand" href="/index.html">
+      <img src="/resources/brand-logo-3-removebg.png" alt="Increff Logo" style="filter: brightness(0) invert(1)"
+        height="50px" width="50px">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/HTML/upload.html">
+            <i class="material-icons text-white" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/HTML/checkout.html">
+            <i class="material-icons text-white" data-toggle="tooltip" title="Cart">shopping_cart</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="material-icons text-white" id="logout" data-toggle="tooltip" title="Logout">
+              logout
+            </i>
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
 
   <!-- product grid -->
-  <div class="container-fluid mt-5 pt-5">
+  <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="card-group">
         <div class="col-12 col-md-4 col-lg-3 col-xl-3 p-3 d-none" id="firstProduct">

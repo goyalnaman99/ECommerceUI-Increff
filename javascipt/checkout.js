@@ -9,6 +9,7 @@ $.getJSON("/resources/inventory.json", function (products) {
   if (cartItems.length == 0) {
     $("#emptyCart").removeClass("d-none");
     $("#cartPrice").addClass("d-none");
+    $("#cartContainer").addClass("d-none");
   } else {
     cartItems.forEach((item) => {
       const product = products.filter((product) => item.id === product.id)[0];
@@ -30,13 +31,40 @@ $.getJSON("/resources/inventory.json", function (products) {
           .find("#product-price")
           .text("Rs. " + product.mrp.toLocaleString());
         cartItem.find("#product-size").text("Size : " + product.size);
+        cartItem.find("#minus-btn").attr("id", "minus-btn" + product.id);
+        cartItem.find("#plus-btn").attr("id", "plus-btn" + product.id);
         cartItem
-          .find("#product-quantity")
-          .text("Qty : " + getProductQuantity(product.id));
+          .find("#qty_input")
+          .attr("id", "qty_input" + product.id)
+          .val(getProductQuantity(product.id));
         cartItem.find("#delete").attr("id", "delete" + product.id);
 
         //appending to container
         $("#cartContainer").append(cartItem);
+
+        //quantity increment/decrement
+        $("#plus-btn" + product.id).click(function () {
+          // console.log("plus clicked");
+          $("#qty_input" + product.id).val(
+            parseInt($("#qty_input" + product.id).val()) + 1
+          );
+          //adding to cart
+          const qty = Number($("#qty_input" + product.id).val());
+          addToCart(product.id, qty);
+          location.reload();
+        });
+        $("#minus-btn" + product.id).click(function () {
+          $("#qty_input" + product.id).val(
+            parseInt($("#qty_input" + product.id).val()) - 1
+          );
+          if ($("#qty_input" + product.id).val() <= 0) {
+            $("#qty_input" + product.id).val(0);
+          }
+          //adding to cart
+          const qty = Number($("#qty_input" + product.id).val());
+          addToCart(product.id, qty);
+          location.reload();
+        });
 
         //calculation of total price
         totalPrice +=
@@ -51,6 +79,11 @@ $.getJSON("/resources/inventory.json", function (products) {
   }
   $("#totalItems").text(cartItems.length || 0);
   $("#totalMRP").text("Rs. " + totalPrice.toLocaleString());
+  $("#clearCart").click(function () {
+    cartItems = [];
+    setCartMap(cartItems);
+    location.reload();
+  });
 });
 
 //init

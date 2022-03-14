@@ -23,7 +23,6 @@ $.getJSON("resources/inventory.json", function (products) {
       .find("#qty_input")
       .attr("id", "qty_input" + product.id)
       .val(getProductQuantity(product.id));
-    item.find("#add-cart").attr("id", "add-cart" + product.id);
     $(".card-group").append(item);
 
     //Routing to Details
