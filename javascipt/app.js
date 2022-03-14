@@ -80,6 +80,7 @@ function deletefromCart(productId) {
     if (index >= 0) {
       cartItems.splice(index, 1);
     }
+    setCartBadge(cartItems);
     setCartMap(cartItems);
   }
 }
@@ -92,8 +93,8 @@ function addToCart(productId, qty) {
       deletefromCart(productId);
     } else {
       qty = 1;
-      location.reload();
     }
+    location.reload();
     return;
   }
 
@@ -116,6 +117,17 @@ function addToCart(productId, qty) {
       qty,
     });
   }
+  setCartBadge(cartItems);
   setCartMap(cartItems);
   $("qty_input" + productId).val(qty);
 }
+
+//setting badge info
+function setCartBadge(cartItems) {
+  if (cartItems.length > 0) {
+    $("#itemBadge").text(cartItems.length);
+  } else {
+    $("#itemBadge").text("");
+  }
+}
+setCartBadge(getCartItems());

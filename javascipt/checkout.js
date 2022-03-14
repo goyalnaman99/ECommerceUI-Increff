@@ -13,8 +13,10 @@ $.getJSON("/resources/inventory.json", function (products) {
   } else {
     cartItems.forEach((item) => {
       const product = products.filter((product) => item.id === product.id)[0];
-      console.log(product);
-      console.log(product.id);
+      if (product == undefined) {
+        console.log("prod undefined");
+        return;
+      }
       if (getProductQuantity(item.id) > 0) {
         const cartItem = dummy.clone();
         cartItem.removeClass("d-none");
@@ -30,7 +32,6 @@ $.getJSON("/resources/inventory.json", function (products) {
         cartItem
           .find("#product-price")
           .text("Rs. " + product.mrp.toLocaleString());
-        cartItem.find("#product-size").text("Size : " + product.size);
         cartItem.find("#minus-btn").attr("id", "minus-btn" + product.id);
         cartItem.find("#plus-btn").attr("id", "plus-btn" + product.id);
         cartItem

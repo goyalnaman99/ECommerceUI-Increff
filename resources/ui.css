@@ -21,10 +21,53 @@ footer {
   cursor: pointer;
 }
 
-input{
+input {
   text-align: center !important;
 }
 
-.img-thumbnail{
+.img-thumbnail {
   height: 10rem;
+}
+
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-xs-5ths {
+  width: 20%;
+  float: left;
+}
+@media (min-width: 768px) {
+  .col-sm-5ths {
+    width: 33.33%;
+    float: left;
+  }
+}
+@media (min-width: 992px) {
+  .col-md-5ths {
+    width: 33.33%;
+    float: left;
+  }
+}
+@media (min-width: 1200px) {
+  .col-lg-5ths {
+    width: 20% !important;
+    float: left;
+  }
+}
+
+.iconClass {
+  position: relative;
+}
+.iconClass span {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: block;
 }

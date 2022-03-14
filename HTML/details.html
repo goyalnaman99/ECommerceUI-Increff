@@ -20,37 +20,32 @@
 
 <body>
   <!-- navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark sticky-top">
+  <nav class="navbar navbar-expand navbar-light bg-dark sticky-top">
     <a class="navbar-brand" href="/index.html">
       <img src="/resources/brand-logo-3-removebg.png" alt="Increff Logo" style="filter: brightness(0) invert(1)"
         height="50px" width="50px">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/HTML/upload.html">
-            <i class="material-icons text-white" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/HTML/checkout.html">
-            <i class="material-icons text-white" data-toggle="tooltip" title="Cart">shopping_cart</i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="material-icons text-white" id="logout" data-toggle="tooltip" title="Logout">
-              logout
-            </i>
-          </a>
-        </li>
-      </ul>
-    </div>
+    >
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/HTML/upload.html">
+          <i class="material-icons text-white" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link iconClass" href="/HTML/checkout.html">
+          <i class="material-icons text-white" data-toggle="tooltip" title="Cart">shopping_cart</i>
+          <span class="badge badge-info" id="itemBadge"></span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="material-icons text-white" id="logout" data-toggle="tooltip" title="Logout">
+            logout
+          </i>
+        </a>
+      </li>
+    </ul>
   </nav>
 
   <!-- product details -->
@@ -78,17 +73,14 @@
           </div>
         </div>
         <hr />
-        <div class="row m-auto">
-          <h5>PRODUCT DETAILS</h5>
-          <i class="material-icons ml-2">info</i>
-        </div>
+        <h5>PRODUCT DETAILS</h5>
         <p id="product-description"></p>
       </div>
     </div>
   </div>
 
   <!-- footer -->
-  <footer class="footer bg-dark">
+  <footer class="footer bg-dark py-2">
     <span class="text-white" id="datetime"></span>
   </footer>
 

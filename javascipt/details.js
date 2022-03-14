@@ -14,7 +14,6 @@ $.getJSON("/resources/inventory.json", function (products) {
   $("#product-brand").text(product.brand);
   $("#product-name").text(product.name);
   $("#product-price").text("Rs. " + product.mrp.toLocaleString());
-  $("#product-size").text("Size : " + product.size);
   $("#product-description").text(product.description);
   $("#minus-btn").attr("id", "minus-btn" + product.id);
   $("#plus-btn").attr("id", "plus-btn" + product.id);

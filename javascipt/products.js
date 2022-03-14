@@ -1,9 +1,9 @@
+let noOfResults = 0;
 //populating the product grid
 $.getJSON("resources/inventory.json", function (products) {
   const dummy = $("#firstProduct");
-
   products.forEach((product) => {
-    console.log(product);
+    noOfResults++;
     const item = dummy.clone();
     item.removeClass("d-none");
     item.attr("id", product.id);
@@ -16,7 +16,6 @@ $.getJSON("resources/inventory.json", function (products) {
     );
     item.find("#product-name").text(product.name);
     item.find("#product-price").text("Rs. " + product.mrp.toLocaleString());
-    item.find("#product-size").text("Size : " + product.size);
     item.find("#minus-btn").attr("id", "minus-btn" + product.id);
     item.find("#plus-btn").attr("id", "plus-btn" + product.id);
     item
@@ -54,6 +53,7 @@ $.getJSON("resources/inventory.json", function (products) {
       addToCart(product.id, qty);
     });
   });
+  $("#noOfResults").text("Showing " + noOfResults + " results");
 });
 
 //init
