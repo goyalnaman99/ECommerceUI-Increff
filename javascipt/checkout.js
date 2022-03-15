@@ -17,7 +17,7 @@ $.getJSON("/resources/inventory.json", function (products) {
         console.log("prod undefined");
         return;
       }
-      if (getProductQuantity(item.id) > 0) {
+      if (item.qty > 0) {
         const cartItem = dummy.clone();
         cartItem.removeClass("d-none");
         cartItem.attr("id", item.id);
@@ -37,7 +37,7 @@ $.getJSON("/resources/inventory.json", function (products) {
         cartItem
           .find("#qty_input")
           .attr("id", "qty_input" + product.id)
-          .val(getProductQuantity(product.id));
+          .val(item.qty);
         cartItem.find("#delete").attr("id", "delete" + product.id);
 
         //appending to container
@@ -68,8 +68,7 @@ $.getJSON("/resources/inventory.json", function (products) {
         });
 
         //calculation of total price
-        totalPrice +=
-          (product.mrp || 0) * Number(getProductQuantity(product.id));
+        totalPrice += (product.mrp || 0) * Number(item.qty);
 
         $("#delete" + product.id).click(function () {
           deletefromCart(product.id);
@@ -78,8 +77,18 @@ $.getJSON("/resources/inventory.json", function (products) {
       }
     });
   }
+  //downloading order csv onclick of place order button
+  $("#placeOrder").click(function () {
+    downloadOrderCSV(products);
+  });
+
+  //showing no of items in cart
   $("#totalItems").text(cartItems.length || 0);
+
+  //showing total price
   $("#totalMRP").text("Rs. " + totalPrice.toLocaleString());
+
+  //clearing cart onclick of clear cart icon
   $("#clearCart").click(function () {
     cartItems = [];
     setCartMap(cartItems);
@@ -87,5 +96,53 @@ $.getJSON("/resources/inventory.json", function (products) {
   });
 });
 
+function downloadOrderCSV(products) {
+  let cartItems = getCartItems();
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userName = user[0].firstname;
+  let rows = [];
+  cartItems.forEach((item) => {
+    const product = products.filter((product) => item.id === product.id)[0];
+    rows.push({
+      Id: product.id,
+      Name: product.name,
+      Brand: product.brand,
+      MRP: product.mrp,
+      Quantity: item.qty,
+      TotalPrice: product.mrp * item.qty,
+    });
+  });
+
+  //sorting according to product id
+  rows.sort((a, b) => (a.Id > b.Id ? 1 : b.Id > a.Id ? -1 : 0));
+
+  //unparsing to csv
+  const csv = Papa.unparse(rows);
+
+  // Creating a Blob for having a csv file format and passing the data with type
+  const blob = new Blob([csv], { type: "text/csv" });
+
+  // Creating an object for downloading url
+  const url = window.URL.createObjectURL(blob);
+
+  // Creating an anchor(a) tag of HTML
+  const a = document.createElement("a");
+
+  // Passing the blob downloading url
+  a.setAttribute("href", url);
+
+  //getting datetime of order
+  var today = new Date().toLocaleString("en-IN");
+
+  // Setting the anchor tag attribute for downloading and passing the download file name
+  a.setAttribute("download", userName + " " + today + ".csv");
+
+  // Performing a download with click
+  a.click();
+
+  cartItems = [];
+  setCartMap(cartItems);
+  location.reload();
+}
 //init
 checkLoggedIn();
