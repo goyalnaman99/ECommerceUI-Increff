@@ -130,4 +130,9 @@ function setCartBadge(cartItems) {
     $("#itemBadge").text("");
   }
 }
+
 setCartBadge(getCartItems());
+
+$("#navUser").text(
+  "Hi, " + JSON.parse(localStorage.getItem("user"))[0].firstname
+);

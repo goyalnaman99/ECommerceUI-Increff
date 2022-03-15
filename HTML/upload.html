@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Product Details</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="icon" href="https://storage.googleapis.com/www.increff.com/img/favicon.png?v=2" type="image/x-icon" />
+    <link rel="stylesheet"
+        href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="/resources/ui.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand navbar-light bg-dark sticky-top">
+        <a class="navbar-brand" href="/index.html">
+            <img src="/resources/brand-logo-3-removebg.png" alt="Increff Logo" style="filter: brightness(0) invert(1)"
+                height="50px" width="50px">
+        </a>
+        >
+        <ul class="navbar-nav ml-auto">
+            <div class="row mx-2 my-2">
+                <span class="text-white font-italic" id="navUser"></span>
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="/HTML/upload.html">
+                    <i class="material-icons text-white" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link iconClass" href="/HTML/checkout.html">
+                    <i class="material-icons text-white" data-toggle="tooltip" title="Cart">shopping_cart</i>
+                    <span class="badge badge-info" id="itemBadge"></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="material-icons text-white" id="logout" data-toggle="tooltip" title="Logout">
+                        logout
+                    </i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- upload table container -->
+
+
+
+    <!-- footer -->
+    <footer class="footer bg-dark py-2">
+        <span class="text-white" id="datetime"></span>
+    </footer>
+
+    <!-- scripts -->
+    <script src="https://storage.googleapis.com/static.increff.com/jquery/3.6.0/jquery-3.6.0.min.js"></script>
+    <script src="/javascipt/app.js"></script>
+    <script src="/javascipt/details.js"></script>
+    <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
