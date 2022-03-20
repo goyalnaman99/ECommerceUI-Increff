@@ -78,18 +78,12 @@
                                 <h6 id="product-size" class="text-secondary"></h6>
                                 <h6 id="product-price"></h6>
                                 <div class="row justify-content-between ml-0">
-                                    <div class="input-group mb-2 text-center w-25">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-dark btn-sm" id="minus-btn"><i
-                                                    class="fa fa-minus"></i></button>
-                                        </div>
-                                        <input type="number" id="qty_input"
-                                            class="form-control form-control-sm disabled" disabled="true" value="0"
-                                            step="1" min="0">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-dark btn-sm" id="plus-btn"><i
-                                                    class="fa fa-plus"></i></button>
-                                        </div>
+                                    <div>
+                                        <button class="btn btn-dark btn-sm" id="minus-btn"><i
+                                                class="fa fa-minus"></i></button>
+                                        <span class="mx-2" id="qty_input"></span>
+                                        <button class="btn btn-dark btn-sm" id="plus-btn"><i
+                                                class="fa fa-plus"></i></button>
                                     </div>
                                     <i class="material-icons cursor" id="delete" data-toggle="tooltip"
                                         title="Remove Product from Cart">

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Product Details</title>
+    <title>Upload Order CSV</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,7 +25,6 @@
             <img src="/resources/brand-logo-3-removebg.png" alt="Increff Logo" style="filter: brightness(0) invert(1)"
                 height="50px" width="50px">
         </a>
-        >
         <ul class="navbar-nav ml-auto">
             <div class="row mx-2 my-2">
                 <span class="text-white font-italic" id="navUser"></span>
@@ -52,7 +51,23 @@
     </nav>
 
     <!-- upload table container -->
-
+    <div class="container">
+        <div class="row  m-3">
+            <div class="col-12">
+                <input type="file" id="upload-csv" accept=".csv">
+                <button class="btn btn-sm btn-outline-primary" id="read-csv-btn">Read CSV</button>
+            </div>
+            <div class="d-none col-12 mt-5" id="table-container">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="thead-dark">
+                    </thead>
+                    <tbody>
+                        <tr class="d-none"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
     <!-- footer -->
@@ -63,7 +78,8 @@
     <!-- scripts -->
     <script src="https://storage.googleapis.com/static.increff.com/jquery/3.6.0/jquery-3.6.0.min.js"></script>
     <script src="/javascipt/app.js"></script>
-    <script src="/javascipt/details.js"></script>
+    <script src="/javascipt/upload.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"></script>
     <script src="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
 </body>
 

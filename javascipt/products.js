@@ -21,7 +21,7 @@ $.getJSON("resources/inventory.json", function (products) {
     item
       .find("#qty_input")
       .attr("id", "qty_input" + product.id)
-      .val(getProductQuantity(product.id));
+      .text(getProductQuantity(product.id));
     $(".card-group").append(item);
 
     //Routing to Details
@@ -33,28 +33,48 @@ $.getJSON("resources/inventory.json", function (products) {
 
     //quantity increment/decrement
     $("#plus-btn" + product.id).click(function () {
-      // console.log("plus clicked");
-      $("#qty_input" + product.id).val(
-        parseInt($("#qty_input" + product.id).val()) + 1
+      $("#qty_input" + product.id).html(
+        parseInt($("#qty_input" + product.id).text()) + 1
       );
       //adding to cart
-      const qty = Number($("#qty_input" + product.id).val());
+      const qty = Number($("#qty_input" + product.id).text());
       addToCart(product.id, qty);
     });
     $("#minus-btn" + product.id).click(function () {
-      $("#qty_input" + product.id).val(
-        parseInt($("#qty_input" + product.id).val()) - 1
+      $("#qty_input" + product.id).html(
+        parseInt($("#qty_input" + product.id).text()) - 1
       );
-      if ($("#qty_input" + product.id).val() <= 0) {
-        $("#qty_input" + product.id).val(0);
+      if (Number($("#qty_input" + product.id).text()) <= 0) {
+        $("#qty_input" + product.id).text(0);
       }
       //adding to cart
-      const qty = Number($("#qty_input" + product.id).val());
+      const qty = Number($("#qty_input" + product.id).text());
       addToCart(product.id, qty);
     });
   });
   $("#noOfResults").text("Showing " + noOfResults + " results");
+
+  //populating Filters
+  populateFilters(products);
 });
 
+function populateFilters(products) {
+  const brands = [...new Set(products.map((item) => item.brand))];
+  const categories = [...new Set(products.map((item) => item.category))];
+  const dummyBrand = $("#brand-filter-dummy");
+  brands.forEach((brand) => {
+    const formVal = dummyBrand.clone();
+    formVal.find("label").text(brand);
+    $("#brand-filter-section").append(formVal);
+  });
+  dummyBrand.addClass("d-none");
+  const dummyCategory = $("#category-filter-dummy");
+  categories.forEach((category) => {
+    const formVal = dummyCategory.clone();
+    formVal.find("label").text(category);
+    $("#category-filter-section").append(formVal);
+  });
+  dummyCategory.addClass("d-none");
+}
 //init
 checkLoggedIn();

@@ -37,7 +37,7 @@ $.getJSON("/resources/inventory.json", function (products) {
         cartItem
           .find("#qty_input")
           .attr("id", "qty_input" + product.id)
-          .val(item.qty);
+          .text(item.qty);
         cartItem.find("#delete").attr("id", "delete" + product.id);
 
         //appending to container
@@ -45,28 +45,26 @@ $.getJSON("/resources/inventory.json", function (products) {
 
         //quantity increment/decrement
         $("#plus-btn" + product.id).click(function () {
-          // console.log("plus clicked");
-          $("#qty_input" + product.id).val(
-            parseInt($("#qty_input" + product.id).val()) + 1
+          $("#qty_input" + product.id).html(
+            parseInt($("#qty_input" + product.id).text()) + 1
           );
           //adding to cart
-          const qty = Number($("#qty_input" + product.id).val());
+          const qty = Number($("#qty_input" + product.id).text());
           addToCart(product.id, qty);
           location.reload();
         });
         $("#minus-btn" + product.id).click(function () {
-          $("#qty_input" + product.id).val(
-            parseInt($("#qty_input" + product.id).val()) - 1
+          $("#qty_input" + product.id).html(
+            parseInt($("#qty_input" + product.id).text()) - 1
           );
-          if ($("#qty_input" + product.id).val() <= 0) {
-            $("#qty_input" + product.id).val(0);
+          if (Number($("#qty_input" + product.id).text()) <= 0) {
+            $("#qty_input" + product.id).text(0);
           }
           //adding to cart
-          const qty = Number($("#qty_input" + product.id).val());
+          const qty = Number($("#qty_input" + product.id).text());
           addToCart(product.id, qty);
           location.reload();
         });
-
         //calculation of total price
         totalPrice += (product.mrp || 0) * Number(item.qty);
 

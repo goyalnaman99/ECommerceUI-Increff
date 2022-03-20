@@ -51,12 +51,52 @@
     </ul>
   </nav>
 
+
   <!-- product grid -->
   <div class="container-fluid">
-    <h2>Products</h2>
-    <h6 class="text-secondary" id="noOfResults"></h6>
-    <div class="row justify-content-center">
-      <div class="card-group">
+    <div class="row justify-content-between m-0 mt-2">
+      <h6 class="text-secondary mt-auto" id="noOfResults"></h6>
+      <h2 class="my-auto">Products</h2>
+      <div class="btn-group mr-3">
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Sort
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <button class="dropdown-item" type="button">Price : Low to High</button>
+          <button class="dropdown-item" type="button">Price : High to Low</button>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center m-0">
+      <!-- filter sidebar -->
+      <div class="card col-2 my-3" id="filter-section">
+        <div class="card-body">
+          <h5 class="font-weight-bold mt-1">FILTERS</h5>
+          <hr>
+          <div id="brand-filter-section">
+            <h6>BRAND</h6>
+            <div class="form-check" id="brand-filter-dummy">
+              <input class="form-check-input" type="checkbox">
+              <label class="form-check-label" for="brand-filter-dummy">
+                Default Checkbox
+              </label>
+            </div>
+          </div>
+          <hr>
+          <div id="category-filter-section">
+            <h6>CATEGORY</h6>
+            <div class="form-check" id="category-filter-dummy">
+              <input class="form-check-input" type="checkbox" value="">
+              <label class="form-check-label" for="category-filter-dummy">
+                Default Checkbox
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-group col-10">
         <div class="col-sm-5ths col-md-5ths col-lg-5ths p-3 d-none" id="firstProduct">
           <div class="card">
             <img src="" class="card-img-top cursor img-fluid" alt="Image Not Available" id="product-image" />
@@ -64,16 +104,9 @@
               <h5 id="product-brand"></h5>
               <h6 class="text-secondary" id="product-name"></h6>
               <h6 id="product-price"></h6>
-              <div class="input-group mb-2 text-center w-50 mx-auto">
-                <div class="input-group-prepend">
-                  <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
-                </div>
-                <input type="number" id="qty_input" class="form-control form-control-sm" disabled="true" value="0"
-                  step="1" min="0">
-                <div class="input-group-prepend">
-                  <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
-                </div>
-              </div>
+              <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
+              <span class="mx-2" id="qty_input"></span>
+              <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
             </div>
           </div>
         </div>
