@@ -1,8 +1,91 @@
 let noOfResults = 0;
+let brandFilterList = [];
+let categoryFilterList = [];
 //populating the product grid
 $.getJSON("resources/inventory.json", function (products) {
+  let filteredProducts = products;
+
+  //initially populating grid
+  populateGrid(filteredProducts, 0);
+
+  //populating Filters
+  populateFilters(products);
+
+  //adding brands to list on check and removing on uncheck
+  $('#brand-filter-dummy input[type="checkbox"]').change(function () {
+    console.log(this);
+    if (this.checked) {
+      brandFilterList.push($(this).attr("id"));
+    } else if (!this.checked) {
+      var index = brandFilterList.indexOf($(this).attr("id"));
+      if (index !== -1) {
+        brandFilterList.splice(index, 1);
+      }
+    }
+    console.log(brandFilterList);
+
+    if (brandFilterList.length || categoryFilterList.length) {
+      if (!categoryFilterList.length) {
+        filteredProducts = products.filter((product) =>
+          brandFilterList.includes(product.brand)
+        );
+      } else if (!brandFilterList.length) {
+        filteredProducts = products.filter((product) =>
+          categoryFilterList.includes(product.category)
+        );
+      } else {
+        filteredProducts = products.filter(
+          (product) =>
+            categoryFilterList.includes(product.category) &&
+            brandFilterList.includes(product.brand)
+        );
+      }
+    } else filteredProducts = products;
+    console.log(filteredProducts);
+    $(".card-group").children("*").not("#firstProduct").remove();
+    populateGrid(filteredProducts, 0);
+  });
+
+  //adding category to list on check and removing on uncheck
+  $('#category-filter-dummy input[type="checkbox"]').change(function () {
+    console.log(this);
+    if (this.checked) {
+      categoryFilterList.push($(this).attr("id"));
+    } else if (!this.checked) {
+      var index = categoryFilterList.indexOf($(this).attr("id"));
+      if (index !== -1) {
+        categoryFilterList.splice(index, 1);
+      }
+    }
+    console.log(categoryFilterList);
+
+    if (categoryFilterList.length || brandFilterList.length) {
+      if (!brandFilterList.length) {
+        filteredProducts = products.filter((product) =>
+          categoryFilterList.includes(product.category)
+        );
+      } else if (!categoryFilterList.length) {
+        filteredProducts = products.filter((product) =>
+          brandFilterList.includes(product.brand)
+        );
+      } else {
+        filteredProducts = products.filter(
+          (product) =>
+            categoryFilterList.includes(product.category) &&
+            brandFilterList.includes(product.brand)
+        );
+      }
+    } else filteredProducts = products;
+    console.log(filteredProducts);
+    $(".card-group").children("*").not("#firstProduct").remove();
+    populateGrid(filteredProducts, 0);
+  });
+});
+
+//func to populate grid
+function populateGrid(filteredProducts, noOfResults) {
   const dummy = $("#firstProduct");
-  products.forEach((product) => {
+  filteredProducts.forEach((product) => {
     noOfResults++;
     const item = dummy.clone();
     item.removeClass("d-none");
@@ -53,28 +136,32 @@ $.getJSON("resources/inventory.json", function (products) {
     });
   });
   $("#noOfResults").text("Showing " + noOfResults + " results");
+}
 
-  //populating Filters
-  populateFilters(products);
-});
-
+//func to populate filters
 function populateFilters(products) {
   const brands = [...new Set(products.map((item) => item.brand))];
   const categories = [...new Set(products.map((item) => item.category))];
   const dummyBrand = $("#brand-filter-dummy");
   brands.forEach((brand) => {
     const formVal = dummyBrand.clone();
-    formVal.find("label").text(brand);
+    formVal.find("input").attr("id", brand);
+    formVal.find("label").attr("for", brand).text(brand);
     $("#brand-filter-section").append(formVal);
   });
   dummyBrand.addClass("d-none");
   const dummyCategory = $("#category-filter-dummy");
   categories.forEach((category) => {
     const formVal = dummyCategory.clone();
-    formVal.find("label").text(category);
+    formVal.find("input").attr("id", category);
+    formVal.find("label").attr("for", category).text(category);
     $("#category-filter-section").append(formVal);
   });
   dummyCategory.addClass("d-none");
 }
+
+// console.log("inside filter help");
+
 //init
 checkLoggedIn();
+// filterHelp();

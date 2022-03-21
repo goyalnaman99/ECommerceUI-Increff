@@ -54,10 +54,16 @@
 
   <!-- product grid -->
   <div class="container-fluid">
-    <div class="row justify-content-between m-0 mt-2">
+    <div class="row justify-content-md-between d-block d-md-flex m-0 mt-2">
       <h6 class="text-secondary mt-auto" id="noOfResults"></h6>
       <h2 class="my-auto">Products</h2>
       <div class="btn-group mr-3">
+        <button class="btn btn-outline-secondary mr-2 d-lg-none" type="button" data-toggle="collapse"
+          data-target="#filter-section">
+          <span class="material-icons">
+            filter_alt
+          </span>
+        </button>
         <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Sort
@@ -71,14 +77,14 @@
     <hr>
     <div class="row justify-content-center m-0">
       <!-- filter sidebar -->
-      <div class="card col-2 my-3" id="filter-section">
+      <div class="card col-sm-12 col-lg-2 my-3 collapse d-lg-block" id="filter-section">
         <div class="card-body">
           <h5 class="font-weight-bold mt-1">FILTERS</h5>
           <hr>
           <div id="brand-filter-section">
             <h6>BRAND</h6>
             <div class="form-check" id="brand-filter-dummy">
-              <input class="form-check-input" type="checkbox">
+              <input class="form-check-input brand" type="checkbox" value="">
               <label class="form-check-label" for="brand-filter-dummy">
                 Default Checkbox
               </label>
@@ -88,7 +94,7 @@
           <div id="category-filter-section">
             <h6>CATEGORY</h6>
             <div class="form-check" id="category-filter-dummy">
-              <input class="form-check-input" type="checkbox" value="">
+              <input class="form-check-input category" type="checkbox" value="">
               <label class="form-check-label" for="category-filter-dummy">
                 Default Checkbox
               </label>
@@ -96,7 +102,7 @@
           </div>
         </div>
       </div>
-      <div class="card-group col-10">
+      <div class="card-group col-lg-10">
         <div class="col-sm-5ths col-md-5ths col-lg-5ths p-3 d-none" id="firstProduct">
           <div class="card">
             <img src="" class="card-img-top cursor img-fluid" alt="Image Not Available" id="product-image" />
