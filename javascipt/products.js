@@ -80,10 +80,27 @@ $.getJSON("resources/inventory.json", function (products) {
     $(".card-group").children("*").not("#firstProduct").remove();
     populateGrid(filteredProducts, 0);
   });
+
+  //sorting low to high
+  $("#price-asc").click(function () {
+    console.log("clic");
+    filteredProducts.sort((a, b) => (a.mrp > b.mrp ? 1 : -1));
+    $(".card-group").children("*").not("#firstProduct").remove();
+    populateGrid(filteredProducts, 0);
+  });
+
+  //sorting high to low
+  $("#price-desc").click(function () {
+    console.log("clic");
+    filteredProducts.sort((a, b) => (a.mrp < b.mrp ? 1 : -1));
+    $(".card-group").children("*").not("#firstProduct").remove();
+    populateGrid(filteredProducts, 0);
+  });
 });
 
 //func to populate grid
 function populateGrid(filteredProducts, noOfResults) {
+  console.log(filteredProducts);
   const dummy = $("#firstProduct");
   filteredProducts.forEach((product) => {
     noOfResults++;

@@ -63,14 +63,18 @@ $.getJSON("/resources/inventory.json", function (products) {
           //adding to cart
           const qty = Number($("#qty_input" + product.id).text());
           addToCart(product.id, qty);
-          location.reload();
+          if (qty >= 1) location.reload();
         });
         //calculation of total price
         totalPrice += (product.mrp || 0) * Number(item.qty);
 
         $("#delete" + product.id).click(function () {
-          deletefromCart(product.id);
-          location.reload();
+          $("#confirm-modal").modal("show");
+          $("#remove").click(function () {
+            deletefromCart(product.id);
+            location.reload();
+          });
+          // location.reload();
         });
       }
     });

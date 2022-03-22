@@ -89,12 +89,16 @@ function deletefromCart(productId) {
 function addToCart(productId, qty) {
   //extra check for quantity
   if (qty < 1) {
-    if (confirm("Do you want to remove product from cart?") == true) {
+    $("#confirm-modal").modal("show");
+    $("#remove").click(function () {
       deletefromCart(productId);
-    } else {
-      qty = 1;
-    }
-    location.reload();
+      location.reload();
+      return;
+    });
+    qty = 1;
+    $("#confirm-modal").on("hide.bs.modal", function (e) {
+      location.reload();
+    });
     return;
   }
 
