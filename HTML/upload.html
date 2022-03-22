@@ -13,7 +13,7 @@
     <link rel="stylesheet"
         href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="/resources/ui.css" />
+    <link rel="stylesheet" href="/css/ui.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 </head>
@@ -26,9 +26,7 @@
                 height="50px" width="50px">
         </a>
         <ul class="navbar-nav ml-auto">
-            <div class="row mx-2 my-2">
-                <span class="text-white font-italic" id="navUser"></span>
-            </div>
+
             <li class="nav-item">
                 <a class="nav-link" href="/HTML/upload.html">
                     <i class="material-icons text-white" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
@@ -40,6 +38,9 @@
                     <span class="badge badge-info" id="itemBadge"></span>
                 </a>
             </li>
+            <div class="row mx-2 my-2">
+                <span class="text-white font-italic" id="navUser"></span>
+            </div>
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="material-icons text-white" id="logout" data-toggle="tooltip" title="Logout">
@@ -58,7 +59,7 @@
                 <button class="btn btn-sm btn-outline-primary" id="read-csv-btn">Read CSV</button>
             </div>
             <div class="d-none col-12 mt-5" id="table-container">
-                <table class="table table-striped table-hover table-bordered">
+                <table class="table table-responsive-sm table-striped table-hover table-bordered">
                     <thead class="thead-dark">
                     </thead>
                     <tbody>

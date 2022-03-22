@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="/resources/ui.css" />
+    <link rel="stylesheet" href="/css/ui.css" />
 </head>
 
 <body>
@@ -27,9 +27,7 @@
         </a>
 
         <ul class="navbar-nav ml-auto">
-            <div class="row mx-2 my-2">
-                <span class="text-white font-italic" id="navUser"></span>
-            </div>
+
             <li class="nav-item">
                 <a class="nav-link" href="/HTML/upload.html">
                     <i class="material-icons text-white" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
@@ -41,6 +39,9 @@
                     <span class="badge badge-info" id="itemBadge"></span>
                 </a>
             </li>
+            <div class="row mx-2 my-2">
+                <span class="text-white font-italic" id="navUser"></span>
+            </div>
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="material-icons text-white" id="logout" data-toggle="tooltip" title="Logout">
@@ -61,7 +62,7 @@
             <div class="col-12 col-md-8" id="cartContainer">
                 <div class="row ml-2 mr-2 mt-2 justify-content-between">
                     <h4 class="font-weight-bold">Cart Items</h4>
-                    <button class="btn btn-dark btn-sm py-0">
+                    <button class="btn btn-outline-dark btn-sm py-0">
                         <i class="material-icons cursor" id="clearCart" data-toggle="tooltip" title="Clear Cart">
                             remove_shopping_cart
                         </i>
@@ -106,7 +107,7 @@
                         </div>
                     </div>
                     <div class="row ml-2">
-                        <button class="btn btn-outline-primary" id="placeOrder">Place Order</button>
+                        <button class="btn btn-sm btn-outline-primary" id="placeOrder">Place Order</button>
                     </div>
             </div>
         </div>
@@ -126,8 +127,8 @@
                     <p>Are you sure you want to remove this item from cart?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="remove">Remove</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger" id="remove">Remove</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>

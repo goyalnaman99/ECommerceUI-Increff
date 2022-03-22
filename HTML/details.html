@@ -13,7 +13,7 @@
   <link rel="stylesheet"
     href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" href="/resources/ui.css" />
+  <link rel="stylesheet" href="/css/ui.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
     integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 </head>
@@ -26,9 +26,7 @@
         height="50px" width="50px">
     </a>
     <ul class="navbar-nav ml-auto">
-      <div class="row mx-2 my-2">
-        <span class="text-white font-italic" id="navUser"></span>
-      </div>
+
       <li class="nav-item">
         <a class="nav-link" href="/HTML/upload.html">
           <i class="material-icons text-white" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
@@ -40,6 +38,9 @@
           <span class="badge badge-info" id="itemBadge"></span>
         </a>
       </li>
+      <div class="row mx-2 my-2">
+        <span class="text-white font-italic" id="navUser"></span>
+      </div>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="material-icons text-white" id="logout" data-toggle="tooltip" title="Logout">
@@ -74,6 +75,17 @@
     </div>
   </div>
 
+  <!-- product not found -->
+  <div class="container">
+    <div class="d-none" id="product-not-found">
+      <center>
+        <img src="/resources/product-not-found.png">
+        <p class="font-italic h5 mt-3">We could not find any matches!</p>
+        <p>Go to our <a href="/index.html">Products</a> page.</p>
+      </center>
+    </div>
+  </div>
+
   <!-- confirm modal -->
   <div class="modal" tabindex="-1" role="dialog" id="confirm-modal">
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
@@ -88,8 +100,8 @@
           <p>Are you sure you want to remove this item from cart?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="remove">Remove</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-sm btn-outline-danger" id="remove">Remove</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>

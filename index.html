@@ -13,7 +13,7 @@
   <link rel="stylesheet"
     href="https://storage.googleapis.com/static.increff.com/bootstrap/4.6.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" href="/resources/ui.css" />
+  <link rel="stylesheet" href="/css/ui.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
     integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 </head>
@@ -27,9 +27,6 @@
     </a>
 
     <ul class="navbar-nav ml-auto">
-      <div class="row mx-2 my-2">
-        <span class="text-white font-italic" id="navUser"></span>
-      </div>
       <li class="nav-item">
         <a class="nav-link" href="/HTML/upload.html">
           <i class="material-icons text-white" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
@@ -41,6 +38,9 @@
           <span class="badge badge-info" id="itemBadge"></span>
         </a>
       </li>
+      <div class="row mx-2 my-2">
+        <span class="text-white font-italic" id="navUser"></span>
+      </div>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="material-icons text-white" id="logout" data-toggle="tooltip" title="Logout">
@@ -53,7 +53,7 @@
 
 
   <!-- product grid -->
-  <div class="container-fluid">
+  <div class="container-fluid mb-2">
     <div class="row justify-content-md-between d-block d-md-flex m-0 mt-2">
       <h6 class="text-secondary mt-auto" id="noOfResults"></h6>
       <h2 class="my-auto">Products</h2>
@@ -134,8 +134,8 @@
           <p>Are you sure you want to remove this item from cart?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="remove">Remove</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-sm btn-outline-danger" id="remove">Remove</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
