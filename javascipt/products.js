@@ -3,6 +3,8 @@ let brandFilterList = [];
 let categoryFilterList = [];
 
 $(document).ready(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+
   $.getJSON("resources/inventory.json", function (products) {
     let filteredProducts = products;
 

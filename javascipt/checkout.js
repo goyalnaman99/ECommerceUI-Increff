@@ -2,6 +2,7 @@
 let totalPrice = 0;
 let cartItems = getCartItems();
 $(document).ready(function () {
+  $('[data-toggle="tooltip"]').tooltip();
   //getting product from json
   $.getJSON("/resources/inventory.json", function (products) {
     const dummy = $("#firstCartItem");
@@ -203,7 +204,12 @@ function downloadOrderCSV(products) {
 
   cartItems = [];
   setCartMap(cartItems);
-  location.reload();
+
+  $("#emptyCart").removeClass("d-none");
+  $("#cartPrice").addClass("d-none");
+  $("#cartContainer").addClass("d-none");
+
+  $("#order-placed-modal").modal("show");
 }
 
 //init

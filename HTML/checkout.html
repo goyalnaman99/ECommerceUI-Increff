@@ -23,14 +23,15 @@
     <nav class="navbar navbar-expand navbar-light bg-dark sticky-top">
         <a class="navbar-brand" href="/index.html">
             <img src="/resources/brand-logo-3-removebg.png" alt="Increff Logo" style="filter: brightness(0) invert(1)"
-                height="50px" width="50px">
+                height="50px" width="50px" data-toggle="tooltip" title="Home">
         </a>
+        <span class="text-white font-italic font-weight-bold">E-Commerce</span>
 
         <ul class="navbar-nav ml-auto">
 
             <li class="nav-item">
                 <a class="nav-link" href="/HTML/upload.html">
-                    <i class="material-icons text-white" data-tooltip="tooltip" title="Upload Order CSV">upload_file</i>
+                    <i class="material-icons text-white" data-toggle="tooltip" title="Upload Order CSV">upload_file</i>
                 </a>
             </li>
             <li class="nav-item">
@@ -63,7 +64,7 @@
                 <div class="row ml-2 mr-2 mt-2 justify-content-between">
                     <h4 class="font-weight-bold">Cart Items</h4>
                     <button class="btn btn-outline-dark btn-sm py-0">
-                        <i class="material-icons cursor" id="clearCart" data-toggle="tooltip" title="Clear Cart">
+                        <i class="material-icons cursor" id="clearCart" data-toggle="tooltip" data-placement="left" title="Clear Cart">
                             remove_shopping_cart
                         </i>
                     </button>
@@ -98,7 +99,7 @@
             <div class="col-12 col-md-4" id="cartPrice">
                 <h4 class="font-weight-bold m-2">Price Details</h3>
                     <hr>
-                    <div class="border rounded shadow m-2">
+                    <div class="border rounded shadow-sm m-2">
                         <div class="row m-0 p-2">
                             <div class="col">
                                 <h6 class="font-weight-bold">Total Items (<span id="totalItems"></span>)</h6>
@@ -150,6 +151,23 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-outline-danger" id="remove-cart">Remove</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- order placed modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="order-placed-modal">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content shadow">
+                <div class="modal-header mx-auto">
+                    <h5 class="modal-title">Order Placed Successfully</h5>
+                </div>
+                <div class="modal-body mx-auto">
+                    <img src="/resources/order-placed-successfully.png" alt="" class="img-fluid">
+                </div>
+                <div class="modal-footer mx-auto">
+                    <a href="/index.html">Explore More Products</a>
                 </div>
             </div>
         </div>

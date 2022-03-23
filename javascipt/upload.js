@@ -1,10 +1,14 @@
-$("#read-csv-btn").on("click", () => {
-  Papa.parse(document.getElementById("upload-csv").files[0], {
-    download: true,
-    header: false,
-    complete: function (results) {
-      populateTable(results.data);
-    },
+$(document).ready(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+  
+  $("#read-csv-btn").on("click", () => {
+    Papa.parse(document.getElementById("upload-csv").files[0], {
+      download: true,
+      header: false,
+      complete: function (results) {
+        populateTable(results.data);
+      },
+    });
   });
 });
 
