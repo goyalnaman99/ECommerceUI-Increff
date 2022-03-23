@@ -1,8 +1,22 @@
+// function getUser() {
+//   const userId = JSON.parse(window.localStorage.getItem("user"));
+//   $.getJSON("/resources/login.json", function (users) {
+//     return users.filter((users) => userId === users.id);
+//   });
+// }
+
 //redirect to login page if user is not logged in
 function checkLoggedIn() {
-  if (window.localStorage.getItem("user") == undefined) {
-    window.location.href = "/HTML/login.html";
-  }
+  const userId = JSON.parse(window.localStorage.getItem("user"));
+  $.getJSON("/resources/login.json", function (users) {
+    const user = users.filter((users) => userId === users.id);
+    // console.log(user);
+    if (!user.length) {
+      window.location.href = "/HTML/login.html";
+      return;
+    }
+    $("#navUser").text("Hi, " + user[0].firstname);
+  });
 }
 
 //redirecting to login page on click of logout
@@ -24,8 +38,7 @@ setInterval(setDateTime, 1000);
 function setCartMap(cartItems) {
   let cartMap = JSON.parse(localStorage.getItem("cartMap"));
   // console.log(cartMap);
-  const user = JSON.parse(localStorage.getItem("user"));
-  const userId = user[0].id;
+  const userId = JSON.parse(window.localStorage.getItem("user"));
 
   //adding to cart map if it already exists
   if (cartMap != null) {
@@ -52,8 +65,7 @@ function setCartMap(cartItems) {
 function getCartItems() {
   const cartMap = JSON.parse(localStorage.getItem("cartMap"));
   // console.log(cartMap);
-  const user = JSON.parse(localStorage.getItem("user"));
-  const userId = user[0].id;
+  const userId = JSON.parse(window.localStorage.getItem("user"));
   if (cartMap != null) {
     const index = cartMap.findIndex((item) => item.userId === userId);
     if (index >= 0) {
@@ -128,15 +140,16 @@ function addToCart(productId, qty) {
 
 //setting badge info
 function setCartBadge(cartItems) {
+  var qty = 0;
   if (cartItems.length > 0) {
-    $("#itemBadge").text(cartItems.length);
+    cartItems.map((item) => {
+      qty += item.qty;
+    });
+    $("#itemBadge").text(qty);
   } else {
     $("#itemBadge").text("");
   }
+  return qty;
 }
 
 setCartBadge(getCartItems());
-
-$("#navUser").text(
-  "Hi, " + JSON.parse(localStorage.getItem("user"))[0].firstname
-);

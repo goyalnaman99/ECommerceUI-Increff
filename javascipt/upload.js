@@ -44,3 +44,6 @@ function generateTableRows(data) {
     $("tbody").append(clone);
   }
 }
+
+//init
+checkLoggedIn();

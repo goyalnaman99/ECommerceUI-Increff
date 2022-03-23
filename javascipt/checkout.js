@@ -1,11 +1,10 @@
 //Initialization of total price
 let totalPrice = 0;
-
+let cartItems = getCartItems();
 $(document).ready(function () {
   //getting product from json
   $.getJSON("/resources/inventory.json", function (products) {
     const dummy = $("#firstCartItem");
-    let cartItems = getCartItems();
 
     if (cartItems.length == 0) {
       $("#emptyCart").removeClass("d-none");
@@ -44,16 +43,27 @@ $(document).ready(function () {
           //appending to container
           $("#cartContainer").append(cartItem);
 
+          $("#delete" + product.id).click(function () {
+            deleteProduct(products, product.id);
+          });
+
           //quantity increment/decrement
           $("#plus-btn" + product.id).click(function () {
             $("#qty_input" + product.id).html(
               parseInt($("#qty_input" + product.id).text()) + 1
             );
+
             //adding to cart
             const qty = Number($("#qty_input" + product.id).text());
             addToCart(product.id, qty);
-            location.reload();
+
+            //updating total items
+            setTotalItems();
+
+            //updating price section
+            calcTotalPrice(products, getCartItems());
           });
+
           $("#minus-btn" + product.id).click(function () {
             $("#qty_input" + product.id).html(
               parseInt($("#qty_input" + product.id).text()) - 1
@@ -64,19 +74,16 @@ $(document).ready(function () {
             //adding to cart
             const qty = Number($("#qty_input" + product.id).text());
             addToCart(product.id, qty);
-            if (qty >= 1) location.reload();
+
+            //updating total items
+            setTotalItems();
+
+            //updating price section
+            calcTotalPrice(products, getCartItems());
           });
+
           //calculation of total price
           totalPrice += (product.mrp || 0) * Number(item.qty);
-
-          $("#delete" + product.id).click(function () {
-            $("#confirm-modal").modal("show");
-            $("#remove").click(function () {
-              deletefromCart(product.id);
-              location.reload();
-            });
-            // location.reload();
-          });
         }
       });
     }
@@ -85,20 +92,72 @@ $(document).ready(function () {
       downloadOrderCSV(products);
     });
 
-    //showing no of items in cart
-    $("#totalItems").text(cartItems.length || 0);
+    //updating total items
+    setTotalItems();
 
     //showing total price
     $("#totalMRP").text("Rs. " + totalPrice.toLocaleString());
+  });
 
-    //clearing cart onclick of clear cart icon
-    $("#clearCart").click(function () {
+  //clearing cart onclick of clear cart icon
+  $("#clearCart").click(function () {
+    console.log("clicked");
+    $("#clear-cart-modal").modal("show");
+    $("#remove-cart").click(function () {
       cartItems = [];
       setCartMap(cartItems);
-      location.reload();
+      setCartBadge(cartItems);
+      $("#emptyCart").removeClass("d-none");
+      $("#cartPrice").addClass("d-none");
+      $("#cartContainer").addClass("d-none");
+      $("#clear-cart-modal").modal("hide");
     });
   });
 });
+
+function deleteProduct(products, productId) {
+  console.log("in deleteprod");
+  console.log(productId);
+  $("#confirm-modal").modal("show");
+  $("#remove").click(function () {
+    deletefromCart(productId);
+
+    if (!getCartItems().length) {
+      $("#emptyCart").removeClass("d-none");
+      $("#cartPrice").addClass("d-none");
+      $("#cartContainer").addClass("d-none");
+    }
+
+    //updating total items
+    setTotalItems();
+
+    //updating total price
+    calcTotalPrice(products, getCartItems());
+
+    // Removing the deleted product from the view
+    $("#cartContainer")
+      .find("#" + productId)
+      .remove();
+
+    $("#confirm-modal").modal("hide");
+  });
+}
+
+function setTotalItems() {
+  //showing no of items in cart
+  $("#totalItems").text(setCartBadge(getCartItems()));
+}
+function calcTotalPrice(products, cartItems) {
+  console.log("in calc total price");
+  totalPrice = 0;
+  cartItems.map((item) => {
+    const product = products.find((prod) => prod.id === item.id);
+    totalPrice += (product.mrp || 0) * Number(item.qty);
+  });
+  console.log(totalPrice);
+  //showing total price
+  $("#totalMRP").text("Rs. " + totalPrice.toLocaleString());
+}
 
 function downloadOrderCSV(products) {
   let cartItems = getCartItems();
@@ -148,5 +207,6 @@ function downloadOrderCSV(products) {
   setCartMap(cartItems);
   location.reload();
 }
+
 //init
 checkLoggedIn();

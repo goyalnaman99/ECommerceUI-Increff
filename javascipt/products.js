@@ -102,7 +102,6 @@ $(document).ready(function () {
 
 //func to populate grid
 function populateGrid(filteredProducts, noOfResults) {
-  console.log(filteredProducts);
   const dummy = $("#firstProduct");
   filteredProducts.forEach((product) => {
     noOfResults++;
