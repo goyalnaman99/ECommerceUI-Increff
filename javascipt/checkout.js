@@ -161,8 +161,6 @@ function calcTotalPrice(products, cartItems) {
 
 function downloadOrderCSV(products) {
   let cartItems = getCartItems();
-  const user = JSON.parse(localStorage.getItem("user"));
-  const userName = user[0].firstname;
   let rows = [];
   cartItems.forEach((item) => {
     const product = products.filter((product) => item.id === product.id)[0];
@@ -198,7 +196,7 @@ function downloadOrderCSV(products) {
   var today = new Date().toLocaleString("en-IN");
 
   // Setting the anchor tag attribute for downloading and passing the download file name
-  a.setAttribute("download", userName + " " + today + ".csv");
+  a.setAttribute("download", today + ".csv");
 
   // Performing a download with click
   a.click();

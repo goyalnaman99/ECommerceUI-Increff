@@ -1,10 +1,3 @@
-// function getUser() {
-//   const userId = JSON.parse(window.localStorage.getItem("user"));
-//   $.getJSON("/resources/login.json", function (users) {
-//     return users.filter((users) => userId === users.id);
-//   });
-// }
-
 //redirect to login page if user is not logged in
 function checkLoggedIn() {
   const userId = JSON.parse(window.localStorage.getItem("user"));

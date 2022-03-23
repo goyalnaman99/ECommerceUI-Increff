@@ -71,3 +71,8 @@ input {
   right: 0px;
   display: block;
 }
+
+#filter-section {
+  height: 50%;
+  overflow-y: scroll;
+}
