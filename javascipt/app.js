@@ -1,6 +1,6 @@
 //redirect to login page if user is not logged in
 function checkLoggedIn() {
-  const userId = JSON.parse(window.localStorage.getItem("user"));
+  const userId = getUserId();
   $.getJSON("/resources/login.json", function (users) {
     const user = users.filter((users) => userId === users.id);
     // console.log(user);
@@ -29,43 +29,43 @@ setInterval(setDateTime, 1000);
 
 //setting Cart-User Map
 function setCartMap(cartItems) {
-  let cartMap = JSON.parse(localStorage.getItem("cartMap"));
-  // console.log(cartMap);
-  const userId = JSON.parse(window.localStorage.getItem("user"));
+  const cartMap = getCartMap();
 
-  //adding to cart map if it already exists
-  if (cartMap != null) {
-    const index = cartMap.findIndex((map) => map.userId === userId);
-    if (index >= 0) {
-      cartMap[index].cartItems = cartItems;
-    } else {
-      cartMap.push({
-        userId: userId,
-        cartItems,
-      });
-    }
-  } else {
-    cartMap = [];
-    cartMap.push({
-      userId: userId,
-      cartItems,
-    });
-  }
+  const userId = getUserId();
+
+  cartMap[userId] = cartItems;
   localStorage.setItem("cartMap", JSON.stringify(cartMap));
+}
+
+// returning the cart map or an empty map if localstorage is empty
+function getCartMap() {
+  try {
+    return JSON.parse(localStorage.getItem("cartMap")) || {};
+  } catch (err) {
+    return {};
+  }
+}
+
+// returning the user id
+function getUserId() {
+  try {
+    return JSON.parse(localStorage.getItem("user"));
+  } catch (err) {
+    return null;
+  }
 }
 
 //getting Cart Items
 function getCartItems() {
-  const cartMap = JSON.parse(localStorage.getItem("cartMap"));
-  // console.log(cartMap);
-  const userId = JSON.parse(window.localStorage.getItem("user"));
-  if (cartMap != null) {
-    const index = cartMap.findIndex((item) => item.userId === userId);
-    if (index >= 0) {
-      return cartMap[index].cartItems;
-    } else return [];
-  } else return [];
+  try {
+    const cartMap = getCartMap();
+    const userId = getUserId();
+    return cartMap.hasOwnProperty(userId) ? cartMap[userId] : [];
+  } catch (err) {
+    return [];
+  }
 }
+
 // getting product quantity
 function getProductQuantity(productId) {
   const cartItems = getCartItems();
@@ -109,6 +109,7 @@ function addToCart(productId, qty) {
 
   const cartItems = getCartItems();
   console.log(cartItems);
+
   //adding to cart item if product exists in cart
   if (cartItems.length) {
     const index = cartItems.findIndex((cartItem) => cartItem.id === productId);
