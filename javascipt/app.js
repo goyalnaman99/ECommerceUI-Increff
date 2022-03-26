@@ -1,3 +1,15 @@
+$(document).ready(function () {
+  checkLoggedIn();
+
+  // Initializing the cart badge in the ui.
+  setCartBadge(getCartItems());
+
+  // Automatically update the date time in the footer every second
+  setInterval(setDateTime, 1000);
+
+  $('[data-tooltip="tooltip"]').tooltip();
+});
+
 //redirect to login page if user is not logged in
 function checkLoggedIn() {
   const userId = getUserId();
@@ -5,8 +17,7 @@ function checkLoggedIn() {
     const user = users.filter((users) => userId === users.id);
     // console.log(user);
     if (!user.length) {
-      window.location.href = "/HTML/login.html";
-      return;
+      logout();
     }
     $("#navUser").text("Hi, " + user[0].firstname);
   });
@@ -14,18 +25,19 @@ function checkLoggedIn() {
 
 //redirecting to login page on click of logout
 $("#logout").click(function () {
+  logout();
+});
+
+function logout() {
   window.localStorage.removeItem("user");
   window.location.href = "/HTML/login.html";
-});
+}
 
 //showing current date-time in footer
 function setDateTime() {
   var today = new Date().toLocaleString("en-IN");
   $("#datetime").text(today);
 }
-
-// Automatically update the date time in the footer every second
-setInterval(setDateTime, 1000);
 
 //setting Cart-User Map
 function setCartMap(cartItems) {
@@ -145,5 +157,3 @@ function setCartBadge(cartItems) {
   }
   return qty;
 }
-
-setCartBadge(getCartItems());
