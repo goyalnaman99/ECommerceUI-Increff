@@ -16,7 +16,12 @@ $(document).ready(function () {
 
 function validateData(data) {
   if (!data.length || data.length == 1) {
-    console.log("The File you have uploaded is empty");
+    $.notify("The file you have uploaded is empty", "error", {
+      clickToHide: true,
+      autoHide: false,
+      arrowShow: true,
+      arrowSize: 5,
+    });
     return;
   }
 
@@ -38,7 +43,7 @@ function validateData(data) {
         }
       } else {
         data.forEach((cell) => {
-          if (!cell.length) {
+          if (!cell.trim().length) {
             data[7] = "No field can be empty. All fields are requried";
             errorData = true;
           }
@@ -58,11 +63,25 @@ function validateData(data) {
       $("#download-sample").addClass("d-none");
       $("#download-errors").removeClass("d-none");
       $("#table-container").addClass("d-none");
+      $.notify("There were errors in uploading CSV", "error", {
+        clickToHide: true,
+        autoHide: false,
+        arrowShow: true,
+        arrowSize: 5,
+      });
       $("#download-errors a").click(function () {
         downloadErrors(data);
       });
-      return;
-    } else populateTable(data);
+    } else {
+      $.notify("CSV Uploaded Successfully", "success", {
+        clickToHide: true,
+        autoHide: true,
+        autoHideDelay: 5000,
+        arrowShow: true,
+        arrowSize: 5,
+      });
+      populateTable(data);
+    }
   });
 }
 

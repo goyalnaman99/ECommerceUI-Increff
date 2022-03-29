@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  checkLoggedIn();
-
   // Initializing the cart badge in the ui.
   setCartBadge(getCartItems());
 
