@@ -25,7 +25,7 @@
             <img src="/resources/brand-logo-3-removebg.png" alt="Increff Logo" style="filter: brightness(0) invert(1)"
                 height="50px" width="50px" data-toggle="tooltip" title="Home">
         </a>
-        <span class="text-white font-italic font-weight-bold">E-Commerce</span>
+        <!-- <span class="text-white font-italic font-weight-bold">E-Commerce</span> -->
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -40,7 +40,7 @@
                 </a>
             </li>
             <div class="row mx-2 my-2">
-                <span class="text-white font-italic" id="navUser"></span>
+                <span class="text-white" id="navUser"></span>
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="#">
@@ -53,12 +53,20 @@
     </nav>
 
     <!-- upload table container -->
-    <div class="container">
-        <div class="row  m-3">
-            <div class="col-12">
-                <input type="file" id="upload-csv" accept=".csv">
-                <button class="btn btn-sm btn-outline-primary mt-2 mt-md-0" id="read-csv-btn">Read CSV</button>
+    <div class="container-fluid">
+        <div class="row justify-content-md-between d-block d-md-flex m-0 mt-2">
+            <h4 class="my-auto">Upload Orders</h4>
+        </div>
+        <hr>
+        <div class="row m-3">
+            <div class="custom-file col-12 col-md-5 col-lg-4">
+                <input type="file" class="custom-file-input" id="upload-csv" accept=".csv"
+                    aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="upload-csv">Choose File</label>
             </div>
+            <button class="btn btn-sm btn-outline-primary mx-2 mt-1 mt-md-0" id="read-csv-btn">Upload</button>
+            <a target="_blank" href="/sample/upload-order-sample.csv" class="mx-2 mt-2">Download Sample</a>
+
             <div class="d-none col-12 mt-5" id="table-container">
                 <table class="table table-responsive-sm table-striped table-hover table-bordered">
                     <thead class="thead-dark">
@@ -69,7 +77,6 @@
                 </table>
             </div>
             <div class="col-12 mt-2" id="download-sample">
-                <a target="_blank" href="/sample/upload-order-sample.csv">Download Sample</a>
             </div>
             <div class="col-12 mt-2 d-none" id="download-errors">
                 <a class="text-danger cursor">Download Errors</a>
@@ -79,7 +86,7 @@
 
 
     <!-- footer -->
-    <footer class="footer bg-dark py-2">
+    <footer class="footer bg-dark py-3">
         <span class="text-white">Copyright &#169; Increff</span>
         <span class="text-white" id="datetime"></span>
     </footer>

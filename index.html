@@ -25,7 +25,7 @@
       <img src="/resources/brand-logo-3-removebg.png" alt="Increff Logo" style="filter: brightness(0) invert(1)"
         height="50px" width="50px" data-toggle="tooltip" title="Home">
     </a>
-    <span class="text-white font-italic font-weight-bold">E-Commerce</span>
+    <!-- <span class="text-white font-italic font-weight-bold">E-Commerce</span> -->
 
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
@@ -40,7 +40,7 @@
         </a>
       </li>
       <div class="row mx-2 my-2">
-        <span class="text-white font-italic" id="navUser"></span>
+        <span class="text-white" id="navUser"></span>
       </div>
       <li class="nav-item">
         <a class="nav-link" href="#">
@@ -54,11 +54,11 @@
 
 
   <!-- product grid -->
-  <div class="container-fluid mb-2">
+  <div class="container-fluid mb-5">
     <div class="row justify-content-md-between d-block d-md-flex m-0 mt-2">
-      <h6 class="text-secondary mt-auto" id="noOfResults"></h6>
       <h2 class="my-auto">Products</h2>
-      <div class="btn-group mr-3">
+      <div class="row mx-0">
+        <h6 class="text-secondary mt-auto mr-2" id="noOfResults"></h6>
         <button class="btn btn-outline-secondary mr-2 d-lg-none" type="button" data-toggle="collapse"
           data-target="#filter-section">
           <span class="material-icons">
@@ -107,13 +107,15 @@
         <div class="col-sm-5ths col-md-5ths col-lg-5ths p-3 d-none" id="firstProduct">
           <div class="card h-100">
             <img src="" class="card-img-top cursor img-fluid" alt="Image Not Available" id="product-image" />
-            <div class="card-body text-center">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
               <h5 id="product-brand"></h5>
-              <h6 class="text-secondary" id="product-name"></h6>
+              <h6 id="product-name"></h6>
               <h6 id="product-price"></h6>
-              <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
-              <span class="mx-2" id="qty_input"></span>
-              <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
+              <div>
+                <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
+                <span class="mx-2" id="qty_input"></span>
+                <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
+              </div>
             </div>
           </div>
         </div>
@@ -143,7 +145,7 @@
   </div>
 
   <!-- footer -->
-  <footer class="footer bg-dark py-2">
+  <footer class="footer bg-dark py-3">
     <span class="text-white">Copyright &#169; Increff</span>
     <span class="text-white" id="datetime"></span>
   </footer>

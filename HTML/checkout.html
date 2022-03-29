@@ -25,7 +25,7 @@
             <img src="/resources/brand-logo-3-removebg.png" alt="Increff Logo" style="filter: brightness(0) invert(1)"
                 height="50px" width="50px" data-toggle="tooltip" title="Home">
         </a>
-        <span class="text-white font-italic font-weight-bold">E-Commerce</span>
+        <!-- <span class="text-white font-italic font-weight-bold">E-Commerce</span> -->
 
         <ul class="navbar-nav ml-auto">
 
@@ -41,7 +41,7 @@
                 </a>
             </li>
             <div class="row mx-2 my-2">
-                <span class="text-white font-italic" id="navUser"></span>
+                <span class="text-white" id="navUser"></span>
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="#">
@@ -63,7 +63,7 @@
             <div class="col-12 col-md-8" id="cartContainer">
                 <div class="row ml-2 mr-2 mt-2 justify-content-between">
                     <h4 class="font-weight-bold">Cart Items</h4>
-                    <button class="btn btn-outline-dark btn-sm py-0">
+                    <button class="btn btn-outline-danger btn-sm py-0">
                         <i class="material-icons cursor" id="clearCart" data-toggle="tooltip" data-placement="left"
                             title="Clear Cart">
                             remove_shopping_cart
@@ -75,24 +75,21 @@
                     <div class="row m-0 p-2">
                         <img class="img-fluid img-thumbnail border-0" src="" alt="Image Not Available" />
                         <div class="col">
-                            <h5 id="product-brand" class="font-weight-bold">
-                                </h4>
-                                <h6 class="text-secondary" id="product-name"></h6>
-                                <h6 id="product-size" class="text-secondary"></h6>
-                                <h6 id="product-price"></h6>
-                                <div class="row justify-content-between ml-0">
-                                    <div>
-                                        <button class="btn btn-dark btn-sm" id="minus-btn"><i
-                                                class="fa fa-minus"></i></button>
-                                        <span class="mx-2" id="qty_input"></span>
-                                        <button class="btn btn-dark btn-sm" id="plus-btn"><i
-                                                class="fa fa-plus"></i></button>
-                                    </div>
-                                    <i class="material-icons cursor" id="delete" data-toggle="tooltip"
-                                        title="Remove Product from Cart">
-                                        delete
-                                    </i>
-                                </div>
+                            <div class="row justify-content-between ml-0">
+                                <h5 id="product-brand" class="font-weight-bold"></h5>
+                                <i class="material-icons cursor text-danger" id="delete" data-toggle="tooltip"
+                                    title="Remove Product from Cart">
+                                    delete
+                                </i>
+                            </div>
+                            <h6 id="product-name"></h6>
+                            <h6 id="product-size" class="text-secondary"></h6>
+                            <h6 id="product-price"></h6>
+                            <div>
+                                <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i></button>
+                                <span class="mx-2" id="qty_input"></span>
+                                <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ml-2">
+                    <div class="row mr-2 justify-content-end">
                         <button class="btn btn-sm btn-outline-primary" id="placeOrder">Place Order</button>
                     </div>
             </div>
@@ -162,7 +159,7 @@
         <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
             <div class="modal-content shadow">
                 <div class="modal-header mx-auto">
-                    <h5 class="modal-title">Order Placed Successfully</h5>
+                    <h5 class="modal-title">Order Placed Successfully!</h5>
                 </div>
                 <div class="modal-body mx-auto">
                     <img src="/resources/order-placed-successfully.png" alt="" class="img-fluid">
@@ -175,7 +172,7 @@
     </div>
 
     <!-- footer -->
-    <footer class="footer bg-dark py-2">
+    <footer class="footer bg-dark py-3">
         <span class="text-white">Copyright &#169; Increff</span>
         <span class="text-white" id="datetime"></span>
     </footer>

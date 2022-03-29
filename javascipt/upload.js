@@ -60,7 +60,6 @@ function validateData(data) {
       i++;
     });
     if (errorData == true) {
-      $("#download-sample").addClass("d-none");
       $("#download-errors").removeClass("d-none");
       $("#table-container").addClass("d-none");
       $.notify("There were errors in uploading CSV", "error", {
@@ -117,7 +116,6 @@ function populateTable(data) {
     return;
   }
 
-  $("#download-sample").addClass("d-none");
   $(".table-row").remove();
   $("thead").empty();
 
