@@ -57,7 +57,7 @@
         <div class="row  m-3">
             <div class="col-12">
                 <input type="file" id="upload-csv" accept=".csv">
-                <button class="btn btn-sm btn-outline-primary" id="read-csv-btn">Read CSV</button>
+                <button class="btn btn-sm btn-outline-primary mt-2 mt-md-0" id="read-csv-btn">Read CSV</button>
             </div>
             <div class="d-none col-12 mt-5" id="table-container">
                 <table class="table table-responsive-sm table-striped table-hover table-bordered">
@@ -67,6 +67,12 @@
                         <tr class="d-none"></tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="col-12 mt-2" id="download-sample">
+                <a target="_blank" href="/sample/upload-order-sample.csv">Download Sample</a>
+            </div>
+            <div class="col-12 mt-2 d-none" id="download-errors">
+                <a class="text-danger">Download Errors</a>
             </div>
         </div>
     </div>

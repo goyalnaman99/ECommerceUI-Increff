@@ -15,6 +15,11 @@ $(document).ready(function () {
 });
 
 function validateData(data) {
+  if (!data.length || data.length == 1) {
+    console.log("The File you have uploaded is empty");
+    return;
+  }
+
   //getting product from json
   $.getJSON("/resources/inventory.json", function (products) {
     let i = 0;
@@ -50,17 +55,50 @@ function validateData(data) {
       i++;
     });
     if (errorData == true) {
-      console.log("errors present");
+      $("#download-sample").addClass("d-none");
+      $("#download-errors").removeClass("d-none");
+      $("#table-container").addClass("d-none");
+      $("#download-errors a").click(function () {
+        downloadErrors(data);
+      });
       return;
     } else populateTable(data);
   });
 }
+
+function downloadErrors(data) {
+  //unparsing to csv
+  const csv = Papa.unparse(data);
+
+  // Creating a Blob for having a csv file format and passing the data with type
+  const blob = new Blob([csv], { type: "text/csv" });
+
+  // Creating an object for downloading url
+  const url = window.URL.createObjectURL(blob);
+
+  // Creating an anchor(a) tag of HTML
+  const a = document.createElement("a");
+
+  // Passing the blob downloading url
+  a.setAttribute("href", url);
+
+  //getting datetime of order
+  var today = new Date().toLocaleString("en-IN");
+
+  // Setting the anchor tag attribute for downloading and passing the download file name
+  a.setAttribute("download", today + " errors.csv");
+
+  // Performing a download with click
+  a.click();
+}
+
 function populateTable(data) {
   if (!data.length) {
     console.log("The File you have uploaded is empty");
     return;
   }
 
+  $("#download-sample").addClass("d-none");
   $(".table-row").remove();
   $("thead").empty();
 
