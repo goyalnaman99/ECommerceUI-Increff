@@ -10,6 +10,7 @@ $(document).ready(function () {
     if (cartItems.length == 0) {
       $("#emptyCart").removeClass("d-none");
       $("#cartPrice").addClass("d-none");
+      $("#cartHeader").addClass("d-none");
       $("#cartContainer").addClass("d-none");
     } else {
       cartItems.forEach((item) => {
@@ -111,6 +112,7 @@ $(document).ready(function () {
       $("#emptyCart").removeClass("d-none");
       $("#cartPrice").addClass("d-none");
       $("#cartContainer").addClass("d-none");
+      $("#cartHeader").addClass("d-none");
       $("#clear-cart-modal").modal("hide");
     });
   });
@@ -208,6 +210,7 @@ function downloadOrderCSV(products) {
   $("#emptyCart").removeClass("d-none");
   $("#cartPrice").addClass("d-none");
   $("#cartContainer").addClass("d-none");
+  $("#cartHeader").addClass("d-none");
 
   $("#order-placed-modal").modal("show");
 }
