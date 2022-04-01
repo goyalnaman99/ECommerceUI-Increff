@@ -73,6 +73,6 @@ input {
 }
 
 #filter-section {
-  height: 500px;
-  overflow-y: scroll;
+  height: 70%;
+  overflow-y: auto;
 }
