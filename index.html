@@ -59,19 +59,18 @@
       <h2 class="my-auto">Products</h2>
       <div class="row mx-0">
         <h6 class="text-secondary mt-auto mr-2" id="noOfResults"></h6>
-        <button class="btn btn-outline-secondary mr-2 d-lg-none" type="button" data-toggle="collapse"
-          data-target="#filter-section">
-          <span class="material-icons">
-            filter_alt
-          </span>
-        </button>
-        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Sort
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-          <button class="dropdown-item" type="button" id="price-asc">Price : Low to High</button>
-          <button class="dropdown-item" type="button" id="price-desc">Price : High to Low</button>
+        <div class="mt-auto">
+          <button class="btn btn-outline-secondary mr-2 d-lg-none p-0" type="button" data-toggle="collapse"
+            data-target="#filter-section">
+            <span class="material-icons align-middle">
+              filter_alt
+            </span>
+          </button>
+          <select class="custom-select-sm btn btn-sm border-secondary">
+            <option selected disabled>Sort</option>
+            <option value="1" id="price-asc">Price : Low to High</option>
+            <option value="2" id="price-desc">Price : High to Low</option>
+          </select>
         </div>
       </div>
     </div>

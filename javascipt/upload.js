@@ -7,11 +7,19 @@ $(document).ready(function () {
     Papa.parse(document.getElementById("upload-csv").files[0], {
       download: true,
       header: true,
+      skipEmptyLines: "greedy",
       complete: function (results) {
         console.log(results.data);
         validateData(results.data);
       },
     });
+  });
+
+  $("#upload-csv").on("change", function () {
+    //get the file name
+    var fileName = $(this).val();
+    //replace the "Choose a file" label
+    $(this).next(".custom-file-label").html(fileName);
   });
 });
 

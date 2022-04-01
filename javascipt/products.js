@@ -84,18 +84,14 @@ $(document).ready(function () {
       populateGrid(filteredProducts, 0);
     });
 
-    //sorting low to high
-    $("#price-asc").click(function () {
-      console.log("clic");
-      filteredProducts.sort((a, b) => (a.mrp > b.mrp ? 1 : -1));
-      $(".card-group").children("*").not("#firstProduct").remove();
-      populateGrid(filteredProducts, 0);
-    });
-
-    //sorting high to low
-    $("#price-desc").click(function () {
-      console.log("clic");
-      filteredProducts.sort((a, b) => (a.mrp < b.mrp ? 1 : -1));
+    $("select").on("change", function (e) {
+      var optionSelected = $("option:selected", this);
+      var valueSelected = this.value;
+      if (valueSelected == 1) {
+        filteredProducts.sort((a, b) => (a.mrp > b.mrp ? 1 : -1));
+      } else if (valueSelected == 2) {
+        filteredProducts.sort((a, b) => (a.mrp < b.mrp ? 1 : -1));
+      }
       $(".card-group").children("*").not("#firstProduct").remove();
       populateGrid(filteredProducts, 0);
     });
