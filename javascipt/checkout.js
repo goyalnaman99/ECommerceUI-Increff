@@ -168,12 +168,12 @@ function downloadOrderCSV(products) {
   cartItems.forEach((item) => {
     const product = products.filter((product) => item.id === product.id)[0];
     rows.push({
-      Id: product.id,
+      ID: product.id,
       Name: product.name,
       Brand: product.brand,
       MRP: product.mrp,
       Quantity: item.qty,
-      TotalPrice: product.mrp * item.qty,
+      "Total Price": product.mrp * item.qty,
     });
   });
 

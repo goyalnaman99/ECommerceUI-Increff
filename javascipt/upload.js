@@ -6,8 +6,9 @@ $(document).ready(function () {
   $("#read-csv-btn").on("click", () => {
     Papa.parse(document.getElementById("upload-csv").files[0], {
       download: true,
-      header: false,
+      header: true,
       complete: function (results) {
+        console.log(results.data);
         validateData(results.data);
       },
     });
@@ -27,38 +28,28 @@ function validateData(data) {
 
   //getting product from json
   $.getJSON("/resources/inventory.json", function (products) {
-    let i = 0;
-    data.map((data, index) => {
-      if (i == 0) {
-        if (
-          data[0] !== "Id" ||
-          data[1] !== "Name" ||
-          data[2] !== "Brand" ||
-          data[3] !== "MRP" ||
-          data[4] !== "Quantity" ||
-          data[5] !== "TotalPrice"
-        ) {
+    for (let i = 0; i < data.length; i++) {
+      let prod = findProduct(products, data[i].id);
+      console.log(prod);
+      if (prod.length) {
+        if (!data[i].quantity.length) {
           errorData = true;
-          data[7] = "Error in Headers. Please follow the Sample";
+          data[i].errors = "Quantity is a required field.";
+        } else {
+          if (data[i].quantity <= 0) {
+            errorData = true;
+            data[i].errors = "Quantity should be more than zero";
+          }
+          if (!Number(data[i].quantity)) {
+            errorData = true;
+            data[i].errors = "Quantity should be a number more than zero";
+          }
         }
       } else {
-        data.forEach((cell) => {
-          if (!cell.trim().length) {
-            data[7] = "No field can be empty. All fields are requried";
-            errorData = true;
-          }
-        });
-        if (data[3] <= 0) {
-          data[7] = "MRP should be a positive number";
-          errorData = true;
-        }
-        if (data[4] <= 0) {
-          data[7] = "Quantity should be a positive number";
-          errorData = true;
-        }
+        errorData = true;
+        data[i].errors = "Product with ID specified doesn't exist";
       }
-      i++;
-    });
+    }
     if (errorData == true) {
       $("#download-errors").removeClass("d-none");
       $("#table-container").addClass("d-none");
@@ -79,9 +70,13 @@ function validateData(data) {
         arrowShow: true,
         arrowSize: 5,
       });
-      populateTable(data);
+      populateTable(data, products);
     }
   });
+}
+
+function findProduct(products, productId) {
+  return products.filter((products) => productId === products.id);
 }
 
 function downloadErrors(data) {
@@ -110,41 +105,61 @@ function downloadErrors(data) {
   a.click();
 }
 
-function populateTable(data) {
-  if (!data.length) {
-    console.log("The File you have uploaded is empty");
-    return;
-  }
-
+function populateTable(data, products) {
   $(".table-row").remove();
   $("thead").empty();
 
   let i = 0;
+  generateTableHead(data);
   data.map((data, index) => {
-    if (i == 0) {
-      generateTableHead(data);
-    } else {
-      generateTableRows(data);
-    }
+    generateTableRows(data, findProduct(products, data.id));
     i++;
   });
   $("#table-container").removeClass("d-none");
 }
 
 function generateTableHead(data) {
-  data.forEach((element) => {
-    $("thead").append(`<th>` + element + `</th>`);
-  });
+  $("thead").append(
+    `<th>` +
+      "Image" +
+      `</th>` +
+      `<th>` +
+      "Name" +
+      `</th>` +
+      `<th>` +
+      "Brand" +
+      `</th>` +
+      `<th>` +
+      "MRP" +
+      `</th>` +
+      `<th>` +
+      "Quantity" +
+      `</th>` +
+      `<th>` +
+      "Total Price" +
+      `</th>`
+  );
 }
 
-function generateTableRows(data) {
-  // console.log(data);
-  const row = $("tbody").find("tr").first();
-  const clone = row.clone().addClass("table-row").removeClass("d-none");
-  if (data.length) {
-    data.map((element) => clone.append(`<td>` + element + `</td>`));
-    $("tbody").append(clone);
-  }
+function generateTableRows(data, product) {
+  console.log(data);
+  console.log(product);
+  let clone = $("#upload-order-row").clone();
+  clone.removeClass("d-none");
+  clone.removeAttr("id");
+  clone.attr("id", product[0].id);
+  clone.find("img").attr("src", product[0].imageUrl);
+  clone.find("img").click(function () {
+    window.location.href = "/HTML/details.html?id=" + product[0].id;
+  });
+  clone.find("#quantity").text(data.quantity);
+  clone.find("#brand").text(product[0].brand);
+  clone.find("#mrp").text("Rs. " + product[0].mrp.toLocaleString());
+  clone
+    .find("#total-price")
+    .text("Rs. " + (data.quantity * product[0].mrp).toLocaleString());
+  clone.find("#name").text(product[0].name);
+  $("tbody").append(clone);
 }
 
 //init
