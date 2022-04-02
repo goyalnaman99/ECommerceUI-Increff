@@ -128,6 +128,7 @@ function deleteProduct(products, productId) {
     if (!getCartItems().length) {
       $("#emptyCart").removeClass("d-none");
       $("#cartPrice").addClass("d-none");
+      $("#cartHeader").addClass("d-none");
       $("#cartContainer").addClass("d-none");
     }
 
