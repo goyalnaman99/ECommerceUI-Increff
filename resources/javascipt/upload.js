@@ -15,9 +15,9 @@ $(document).ready(function () {
     });
   });
 
-  $("#upload-csv").on("change", function () {
+  $("#upload-csv").on("change", function (e) {
     //get the file name
-    var fileName = $(this).val();
+    var fileName = e.target.files[0].name;
     //replace the "Choose a file" label
     $(this).next(".custom-file-label").html(fileName);
   });
@@ -35,12 +35,12 @@ function validateData(data) {
   }
 
   //getting product from json
-  $.getJSON("/resources/inventory.json", function (products) {
+  $.getJSON("/resources/json/inventory.json", function (products) {
     for (let i = 0; i < data.length; i++) {
       let prod = findProduct(products, data[i].id);
       console.log(prod);
       if (prod.length) {
-        if (!data[i].quantity.length) {
+        if (data[i]?.quantity == "") {
           errorData = true;
           data[i].errors = "Quantity is a required field.";
         } else {

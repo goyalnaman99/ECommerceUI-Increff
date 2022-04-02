@@ -5,7 +5,7 @@ let categoryFilterList = [];
 $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
 
-  $.getJSON("resources/inventory.json", function (products) {
+  $.getJSON("resources/json/inventory.json", function (products) {
     let filteredProducts = products;
 
     //initially populating grid

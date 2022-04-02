@@ -4,7 +4,7 @@ let cartItems = getCartItems();
 $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
   //getting product from json
-  $.getJSON("/resources/inventory.json", function (products) {
+  $.getJSON("/resources/json/inventory.json", function (products) {
     const dummy = $("#firstCartItem");
 
     if (cartItems.length == 0) {

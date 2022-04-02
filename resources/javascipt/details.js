@@ -9,7 +9,7 @@ const product_id = search_params.get("id");
 $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
   //getting product from json
-  $.getJSON("/resources/inventory.json", function (products) {
+  $.getJSON("/resources/json/inventory.json", function (products) {
     const product = products.find((product) => product.id === product_id);
 
     if (!product) {

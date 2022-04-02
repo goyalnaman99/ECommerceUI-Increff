@@ -11,7 +11,7 @@ $(document).ready(function () {
 //redirect to login page if user is not logged in
 function checkLoggedIn() {
   const userId = getUserId();
-  $.getJSON("/resources/login.json", function (users) {
+  $.getJSON("/resources/json/login.json", function (users) {
     const user = users.filter((users) => userId === users.id);
     // console.log(user);
     if (!user.length) {
