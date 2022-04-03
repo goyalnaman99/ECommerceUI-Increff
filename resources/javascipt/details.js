@@ -14,8 +14,6 @@ $(document).ready(function () {
 
     if (!product) {
       $("#product-details-container").addClass("d-none");
-      $("nav").addClass("d-none");
-      $("footer").addClass("d-none");
       $("#product-not-found").removeClass("d-none");
     }
 
