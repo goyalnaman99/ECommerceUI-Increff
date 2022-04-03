@@ -79,9 +79,12 @@ $(document).ready(function () {
           );
         }
       } else filteredProducts = products;
-      console.log(filteredProducts);
       $(".card-group").children("*").not("#firstProduct").remove();
       populateGrid(filteredProducts, 0);
+    });
+
+    $("#clear-filters").click(function () {
+      $("input[type=checkbox]").prop("checked", false).change();
     });
 
     $("select").on("change", function (e) {
@@ -152,6 +155,13 @@ function populateGrid(filteredProducts, noOfResults) {
     });
   });
   $("#noOfResults").text("Showing " + noOfResults + " results");
+  if (noOfResults == 0) {
+    $("#zero-results").removeClass("d-none");
+    $(".card-group").addClass("d-none");
+  } else {
+    $("#zero-results").addClass("d-none");
+    $(".card-group").removeClass("d-none");
+  }
 }
 
 //func to populate filters
