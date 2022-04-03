@@ -29,6 +29,30 @@ input {
   height: 10rem;
 }
 
+.text-danger {
+  color: #a90d0dfa !important;
+}
+
+.btn-outline-danger {
+  color: #a90d0dfa;
+  border-color: #a90d0dfa;
+}
+
+.iconClass {
+  position: relative;
+}
+.iconClass span {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: block;
+}
+
+#filter-section {
+  height: 70%;
+  overflow-y: auto;
+}
+
 .col-xs-custom,
 .col-sm-custom,
 .col-md-custom,
@@ -60,19 +84,4 @@ input {
     width: 20% !important;
     float: left;
   }
-}
-
-.iconClass {
-  position: relative;
-}
-.iconClass span {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  display: block;
-}
-
-#filter-section {
-  height: 70%;
-  overflow-y: auto;
 }
