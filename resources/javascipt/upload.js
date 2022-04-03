@@ -7,6 +7,9 @@ $(document).ready(function () {
     Papa.parse(document.getElementById("upload-csv").files[0], {
       download: true,
       header: true,
+      transformHeader: function (h) {
+        return h.trim().toLowerCase();
+      },
       skipEmptyLines: "greedy",
       complete: function (results) {
         console.log(results.data);
@@ -24,7 +27,7 @@ $(document).ready(function () {
 });
 
 function validateData(data) {
-  if (!data.length || data.length == 1) {
+  if (!data.length) {
     $.notify("The file you have uploaded is empty", "error", {
       clickToHide: true,
       autoHide: false,
@@ -48,7 +51,7 @@ function validateData(data) {
             errorData = true;
             data[i].errors = "Quantity should be more than zero";
           }
-          if (!Number(data[i].quantity)) {
+          if (console.log(isNaN(data[i].quantity))) {
             errorData = true;
             data[i].errors = "Quantity should be a number more than zero";
           }
@@ -84,10 +87,12 @@ function validateData(data) {
 }
 
 function findProduct(products, productId) {
+  console.log(productId);
   return products.filter((products) => productId === products.id);
 }
 
 function downloadErrors(data) {
+  console.log(data);
   //unparsing to csv
   const csv = Papa.unparse(data);
 

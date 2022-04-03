@@ -53,6 +53,17 @@ input {
   overflow-y: auto;
 }
 
+.img-height {
+  height: 7rem;
+}
+
+table thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+}
+
 .col-xs-custom,
 .col-sm-custom,
 .col-md-custom,
