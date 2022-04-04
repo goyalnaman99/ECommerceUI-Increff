@@ -59,8 +59,13 @@ function validateData(data) {
           }
         }
       } else {
-        errorData = true;
-        data[i].errors = "Product with ID specified doesn't exist";
+        if (data[i].id == "") {
+          errorData = true;
+          data[i].errors = "Product ID is a required field";
+        } else {
+          errorData = true;
+          data[i].errors = "Product with specified ID doesn't exist";
+        }
       }
     }
     if (errorData == true) {

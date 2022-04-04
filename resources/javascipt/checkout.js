@@ -16,80 +16,107 @@ $(document).ready(function () {
       cartItems.forEach((item) => {
         const product = products.filter((product) => item.id === product.id)[0];
         if (product == undefined) {
+          deletefromCart(item.id);
           return;
         }
-        if (item.qty > 0) {
-          const cartItem = dummy.clone();
-          cartItem.removeClass("d-none");
-          cartItem.attr("id", item.id);
-          cartItem.find("img").attr("src", product.imageUrl);
-          cartItem.find("#product-brand").append(
-            $("<a/>", {
-              href: "/HTML/details.html?id=" + product.id,
-              text: product.brand,
-            })
-          );
-          cartItem.find("#product-name").text(product.name);
-          cartItem
-            .find("#product-price")
-            .text("Rs. " + product.mrp.toLocaleString());
-          cartItem.find("#minus-btn").attr("id", "minus-btn" + product.id);
-          cartItem.find("#plus-btn").attr("id", "plus-btn" + product.id);
-          cartItem
-            .find("#qty_input")
-            .attr("id", "qty_input" + product.id)
-            .text(item.qty);
-          cartItem.find("#delete").attr("id", "delete" + product.id);
-
-          //appending to container
-          $("#cartContainer").append(cartItem);
-
-          $("#delete" + product.id).click(function () {
-            checkLoggedIn();
-            $("#remove-modal-name").text(product.name);
-            deleteProduct(products, product.id);
-          });
-
-          //quantity increment/decrement
-          $("#plus-btn" + product.id).click(function () {
-            checkLoggedIn();
-            $("#qty_input" + product.id).html(
-              parseInt($("#qty_input" + product.id).text()) + 1
+        if (!isNaN(item.qty)) {
+          if (item.qty > 0) {
+            const cartItem = dummy.clone();
+            cartItem.removeClass("d-none");
+            cartItem.attr("id", item.id);
+            cartItem.find("img").attr("src", product.imageUrl);
+            cartItem.find("#product-brand").append(
+              $("<a/>", {
+                href: "/HTML/details.html?id=" + product.id,
+                text: product.brand,
+              })
             );
+            cartItem.find("#product-name").text(product.name);
+            cartItem
+              .find("#product-price")
+              .text("Rs. " + product.mrp.toLocaleString());
+            cartItem.find("#minus-btn").attr("id", "minus-btn" + product.id);
+            cartItem.find("#plus-btn").attr("id", "plus-btn" + product.id);
+            cartItem
+              .find("#qty_input")
+              .attr("id", "qty_input" + product.id)
+              .text(item.qty);
+            cartItem.find("#delete").attr("id", "delete" + product.id);
 
-            //adding to cart
-            const qty = Number($("#qty_input" + product.id).text());
-            addToCart(product.id, qty);
+            //appending to container
+            $("#cartContainer").append(cartItem);
 
-            //updating total items
-            setTotalItems();
+            $("#delete" + product.id).click(function () {
+              checkLoggedIn();
+              $("#remove-modal-name").text(product.name);
+              deleteProduct(products, product.id);
+            });
 
-            //updating price section
-            calcTotalPrice(products, getCartItems());
-          });
+            //quantity increment/decrement
+            $("#plus-btn" + product.id).click(function () {
+              checkLoggedIn();
+              $("#qty_input" + product.id).html(
+                parseInt($("#qty_input" + product.id).text()) + 1
+              );
 
-          $("#minus-btn" + product.id).click(function () {
-            checkLoggedIn();
-            $("#remove-modal-name").text(product.name);
-            $("#qty_input" + product.id).html(
-              parseInt($("#qty_input" + product.id).text()) - 1
+              //adding to cart
+              const qty = Number($("#qty_input" + product.id).text());
+              addToCart(product.id, qty);
+
+              //updating total items
+              setTotalItems();
+
+              //updating price section
+              calcTotalPrice(products, getCartItems());
+            });
+
+            $("#minus-btn" + product.id).click(function () {
+              checkLoggedIn();
+              $("#remove-modal-name").text(product.name);
+              $("#qty_input" + product.id).html(
+                parseInt($("#qty_input" + product.id).text()) - 1
+              );
+              if (Number($("#qty_input" + product.id).text()) <= 0) {
+                $("#qty_input" + product.id).text(0);
+              }
+              //adding to cart
+              const qty = Number($("#qty_input" + product.id).text());
+              addToCart(product.id, qty);
+
+              //updating total items
+              setTotalItems();
+
+              //updating price section
+              calcTotalPrice(products, getCartItems());
+            });
+
+            //calculation of total price
+            totalPrice += (product.mrp || 0) * Number(item.qty);
+          } else {
+            $.notify(
+              "Quantity should be greater than zero for " + product.name,
+              "error",
+              {
+                clickToHide: true,
+                autoHide: false,
+                arrowShow: true,
+                arrowSize: 5,
+              }
             );
-            if (Number($("#qty_input" + product.id).text()) <= 0) {
-              $("#qty_input" + product.id).text(0);
+            deletefromCart(item.id);
+          }
+        } else {
+          $.notify(
+            "Quantity should be a number greater than zero for " + product.name,
+            "error",
+            {
+              clickToHide: true,
+              autoHide: false,
+              arrowShow: true,
+              arrowSize: 5,
             }
-            //adding to cart
-            const qty = Number($("#qty_input" + product.id).text());
-            addToCart(product.id, qty);
-
-            //updating total items
-            setTotalItems();
-
-            //updating price section
-            calcTotalPrice(products, getCartItems());
-          });
-
-          //calculation of total price
-          totalPrice += (product.mrp || 0) * Number(item.qty);
+          );
+          deletefromCart(item.id);
         }
       });
     }
