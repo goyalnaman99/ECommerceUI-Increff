@@ -29,18 +29,28 @@ $(document).ready(function () {
       .text(getProductQuantity(product.id));
     $("#add-cart").attr("id", "add-cart" + product.id);
 
+    if (Number($("#qty_input" + product.id).text()) <= 0) {
+      $("#minus-btn" + product.id).prop("disabled", true);
+    }
+
     //quantity increment/decrement
     $("#plus-btn" + product.id).click(function () {
       checkLoggedIn();
       $("#qty_input" + product.id).html(
         parseInt($("#qty_input" + product.id).text()) + 1
       );
+
+      if (Number($("#qty_input" + product.id).text()) > 0) {
+        $("#minus-btn" + product.id).prop("disabled", false);
+      }
+
       //adding to cart
       const qty = Number($("#qty_input" + product.id).text());
       addToCart(product.id, qty);
     });
     $("#minus-btn" + product.id).click(function () {
       checkLoggedIn();
+      $("#remove-modal-name").text(product.name);
       $("#qty_input" + product.id).html(
         parseInt($("#qty_input" + product.id).text()) - 1
       );

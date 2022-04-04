@@ -46,6 +46,7 @@ $(document).ready(function () {
 
           $("#delete" + product.id).click(function () {
             checkLoggedIn();
+            $("#remove-modal-name").text(product.name);
             deleteProduct(products, product.id);
           });
 
@@ -69,6 +70,7 @@ $(document).ready(function () {
 
           $("#minus-btn" + product.id).click(function () {
             checkLoggedIn();
+            $("#remove-modal-name").text(product.name);
             $("#qty_input" + product.id).html(
               parseInt($("#qty_input" + product.id).text()) - 1
             );
