@@ -4,6 +4,7 @@ $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
 
   $("#read-csv-btn").on("click", () => {
+    checkLoggedIn();
     Papa.parse(document.getElementById("upload-csv").files[0], {
       download: true,
       header: true,
@@ -27,6 +28,7 @@ $(document).ready(function () {
 });
 
 function validateData(data) {
+  checkLoggedIn();
   if (!data.length) {
     $.notify("The file you have uploaded is empty", "error", {
       clickToHide: true,
@@ -87,7 +89,6 @@ function validateData(data) {
 }
 
 function findProduct(products, productId) {
-  console.log(productId);
   return products.filter((products) => productId === products.id);
 }
 

@@ -31,6 +31,7 @@ $(document).ready(function () {
 
     //quantity increment/decrement
     $("#plus-btn" + product.id).click(function () {
+      checkLoggedIn();
       $("#qty_input" + product.id).html(
         parseInt($("#qty_input" + product.id).text()) + 1
       );
@@ -39,6 +40,7 @@ $(document).ready(function () {
       addToCart(product.id, qty);
     });
     $("#minus-btn" + product.id).click(function () {
+      checkLoggedIn();
       $("#qty_input" + product.id).html(
         parseInt($("#qty_input" + product.id).text()) - 1
       );

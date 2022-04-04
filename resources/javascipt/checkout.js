@@ -16,7 +16,6 @@ $(document).ready(function () {
       cartItems.forEach((item) => {
         const product = products.filter((product) => item.id === product.id)[0];
         if (product == undefined) {
-          console.log("prod undefined");
           return;
         }
         if (item.qty > 0) {
@@ -46,11 +45,13 @@ $(document).ready(function () {
           $("#cartContainer").append(cartItem);
 
           $("#delete" + product.id).click(function () {
+            checkLoggedIn();
             deleteProduct(products, product.id);
           });
 
           //quantity increment/decrement
           $("#plus-btn" + product.id).click(function () {
+            checkLoggedIn();
             $("#qty_input" + product.id).html(
               parseInt($("#qty_input" + product.id).text()) + 1
             );
@@ -67,6 +68,7 @@ $(document).ready(function () {
           });
 
           $("#minus-btn" + product.id).click(function () {
+            checkLoggedIn();
             $("#qty_input" + product.id).html(
               parseInt($("#qty_input" + product.id).text()) - 1
             );
@@ -91,6 +93,7 @@ $(document).ready(function () {
     }
     //downloading order csv onclick of place order button
     $("#placeOrder").click(function () {
+      checkLoggedIn();
       downloadOrderCSV(products);
     });
 
@@ -103,7 +106,7 @@ $(document).ready(function () {
 
   //clearing cart onclick of clear cart icon
   $("#clearCart").click(function () {
-    console.log("clicked");
+    checkLoggedIn();
     $("#clear-cart-modal").modal("show");
     $("#remove-cart").click(function () {
       cartItems = [];
@@ -119,8 +122,6 @@ $(document).ready(function () {
 });
 
 function deleteProduct(products, productId) {
-  console.log("in deleteprod");
-  console.log(productId);
   $("#confirm-modal").modal("show");
   $("#remove").click(function () {
     deletefromCart(productId);

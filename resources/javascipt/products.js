@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     //adding brands to list on check and removing on uncheck
     $('#brand-filter-dummy input[type="checkbox"]').change(function () {
-      console.log(this);
+      checkLoggedIn();
       if (this.checked) {
         brandFilterList.push($(this).attr("id"));
       } else if (!this.checked) {
@@ -25,7 +25,6 @@ $(document).ready(function () {
           brandFilterList.splice(index, 1);
         }
       }
-      console.log(brandFilterList);
 
       if (brandFilterList.length || categoryFilterList.length) {
         if (!categoryFilterList.length) {
@@ -44,14 +43,13 @@ $(document).ready(function () {
           );
         }
       } else filteredProducts = products;
-      console.log(filteredProducts);
       $(".card-group").children("*").not("#firstProduct").remove();
       populateGrid(filteredProducts, 0);
     });
 
     //adding category to list on check and removing on uncheck
     $('#category-filter-dummy input[type="checkbox"]').change(function () {
-      console.log(this);
+      checkLoggedIn();
       if (this.checked) {
         categoryFilterList.push($(this).attr("id"));
       } else if (!this.checked) {
@@ -60,7 +58,6 @@ $(document).ready(function () {
           categoryFilterList.splice(index, 1);
         }
       }
-      console.log(categoryFilterList);
 
       if (categoryFilterList.length || brandFilterList.length) {
         if (!brandFilterList.length) {
@@ -84,10 +81,12 @@ $(document).ready(function () {
     });
 
     $("#clear-filters").click(function () {
+      checkLoggedIn();
       $("input[type=checkbox]").prop("checked", false).change();
     });
 
     $("select").on("change", function (e) {
+      checkLoggedIn();
       var optionSelected = $("option:selected", this);
       var valueSelected = this.value;
       if (valueSelected == 1) {
@@ -103,6 +102,7 @@ $(document).ready(function () {
 
 //func to populate grid
 function populateGrid(filteredProducts, noOfResults) {
+  checkLoggedIn();
   const dummy = $("#firstProduct");
   filteredProducts.forEach((product) => {
     noOfResults++;
@@ -130,11 +130,13 @@ function populateGrid(filteredProducts, noOfResults) {
     $("#" + product.id)
       .find("img")
       .click(function () {
+        checkLoggedIn();
         window.location.href = "/HTML/details.html?id=" + product.id;
       });
 
     //quantity increment/decrement
     $("#plus-btn" + product.id).click(function () {
+      checkLoggedIn();
       $("#qty_input" + product.id).html(
         parseInt($("#qty_input" + product.id).text()) + 1
       );
@@ -143,6 +145,7 @@ function populateGrid(filteredProducts, noOfResults) {
       addToCart(product.id, qty);
     });
     $("#minus-btn" + product.id).click(function () {
+      checkLoggedIn();
       $("#qty_input" + product.id).html(
         parseInt($("#qty_input" + product.id).text()) - 1
       );
