@@ -62,7 +62,7 @@
         <div class="mt-auto">
           <button class="btn btn-outline-secondary mr-2 d-lg-none p-0" type="button" data-toggle="collapse"
             data-target="#filter-section">
-            <span class="material-icons align-middle">
+            <span class="material-icons align-middle" data-toggle="tooltip" title="Filters">
               filter_alt
             </span>
           </button>
@@ -81,14 +81,20 @@
         <div class="card-body">
           <div class="d-flex justify-content-between">
             <h5 class="font-weight-bold mt-1">FILTERS</h5>
-            <span class="material-icons my-auto cursor" id="clear-filters">
+            <span class="material-icons my-auto cursor" id="clear-filters" data-toggle="tooltip"
+              title="Clear All Filters">
               filter_alt_off
             </span>
           </div>
           <hr>
           <div id="brand-filter-section">
-            <h6>BRAND</h6>
-            <div class="form-check" id="brand-filter-dummy">
+            <div class="d-flex justify-content-between cursor" data-toggle="collapse" data-target="#brand-filter-dummy">
+              <h6>BRAND</h6>
+              <span class="material-icons">
+                arrow_drop_down
+              </span>
+            </div>
+            <div class="form-check collapse" id="brand-filter-dummy">
               <input class="form-check-input brand" type="checkbox" value="">
               <label class="form-check-label" for="brand-filter-dummy">
                 Default Checkbox
@@ -97,8 +103,14 @@
           </div>
           <hr>
           <div id="category-filter-section">
-            <h6>CATEGORY</h6>
-            <div class="form-check" id="category-filter-dummy">
+            <div class="d-flex justify-content-between cursor" data-toggle="collapse"
+              data-target="#category-filter-dummy">
+              <h6>CATEGORY</h6>
+              <span class="material-icons">
+                arrow_drop_down
+              </span>
+            </div>
+            <div class="form-check collapse" id="category-filter-dummy">
               <input class="form-check-input category" type="checkbox" value="">
               <label class="form-check-label" for="category-filter-dummy">
                 Default Checkbox

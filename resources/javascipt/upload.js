@@ -53,7 +53,7 @@ function validateData(data) {
             errorData = true;
             data[i].errors = "Quantity should be more than zero";
           }
-          if (console.log(isNaN(data[i].quantity))) {
+          if (isNaN(data[i].quantity)) {
             errorData = true;
             data[i].errors = "Quantity should be a number more than zero";
           }
@@ -95,7 +95,7 @@ function findProduct(products, productId) {
 function downloadErrors(data) {
   console.log(data);
   //unparsing to csv
-  const csv = Papa.unparse(data);
+  const csv = Papa.unparse(data, { columns: ["id", "quantity", "errors"] });
 
   // Creating a Blob for having a csv file format and passing the data with type
   const blob = new Blob([csv], { type: "text/csv" });
