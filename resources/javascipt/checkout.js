@@ -237,6 +237,7 @@ function downloadOrderCSV(products) {
 
   cartItems = [];
   setCartMap(cartItems);
+  setCartBadge(cartItems);
 
   $("#emptyCart").removeClass("d-none");
   $("#cartPrice").addClass("d-none");
