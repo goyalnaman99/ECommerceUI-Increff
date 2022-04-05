@@ -182,13 +182,11 @@ function setTotalItems() {
   $("#totalItems").text(setCartBadge(getCartItems()));
 }
 function calcTotalPrice(products, cartItems) {
-  console.log("in calc total price");
   totalPrice = 0;
   cartItems.map((item) => {
     const product = products.find((prod) => prod.id === item.id);
     totalPrice += (product.mrp || 0) * Number(item.qty);
   });
-  console.log(totalPrice);
   //showing total price
   $("#totalMRP").text("Rs. " + totalPrice.toLocaleString());
 }

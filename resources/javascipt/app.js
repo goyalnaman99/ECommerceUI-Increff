@@ -13,7 +13,6 @@ function checkLoggedIn() {
   const userId = getUserId();
   $.getJSON("/resources/json/login.json", function (users) {
     const user = users.filter((users) => userId === users.id);
-    // console.log(user);
     if (!user.length) {
       logout();
     }
@@ -118,7 +117,6 @@ function addToCart(productId, qty) {
   }
 
   const cartItems = getCartItems();
-  console.log(cartItems);
 
   //adding to cart item if product exists in cart
   if (cartItems.length) {

@@ -13,7 +13,6 @@ $(document).ready(function () {
       },
       skipEmptyLines: "greedy",
       complete: function (results) {
-        console.log(results.data);
         validateData(results.data);
       },
     });
@@ -43,7 +42,6 @@ function validateData(data) {
   $.getJSON("/resources/json/inventory.json", function (products) {
     for (let i = 0; i < data.length; i++) {
       let prod = findProduct(products, data[i].id);
-      console.log(prod);
       if (prod.length) {
         if (data[i]?.quantity == "") {
           errorData = true;
@@ -93,7 +91,6 @@ function findProduct(products, productId) {
 }
 
 function downloadErrors(data) {
-  console.log(data);
   //unparsing to csv
   const csv = Papa.unparse(data, { columns: ["id", "quantity", "errors"] });
 
@@ -156,8 +153,6 @@ function generateTableHead(data) {
 }
 
 function generateTableRows(data, product) {
-  console.log(data);
-  console.log(product);
   let clone = $("#upload-order-row").clone();
   clone.removeClass("d-none");
   clone.removeAttr("id");
