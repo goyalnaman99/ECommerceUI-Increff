@@ -71,12 +71,7 @@ function validateData(data) {
     if (errorData == true) {
       $("#download-errors").removeClass("d-none");
       $("#table-container").addClass("d-none");
-      $.notify("There were errors in uploading CSV", "error", {
-        clickToHide: true,
-        autoHide: false,
-        arrowShow: true,
-        arrowSize: 5,
-      });
+      $("#error-message").text("There were errors in uploading CSV");
       $("#download-errors a").click(function () {
         downloadErrors(data);
       });
