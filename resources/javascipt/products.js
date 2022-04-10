@@ -138,7 +138,7 @@ function populateGrid(filteredProducts, noOfResults) {
         window.location.href = "/HTML/details.html?id=" + product.id;
       });
 
-    //quantity increment/decrement
+    //quantity increment
     $("#plus-btn" + product.id).click(function () {
       checkLoggedIn();
       $("#qty_input" + product.id).html(
@@ -153,6 +153,8 @@ function populateGrid(filteredProducts, noOfResults) {
       const qty = Number($("#qty_input" + product.id).text());
       addToCart(product.id, qty);
     });
+
+    //quantity decrement
     $("#minus-btn" + product.id).click(function () {
       checkLoggedIn();
       $("#remove-modal-name").text(product.name);

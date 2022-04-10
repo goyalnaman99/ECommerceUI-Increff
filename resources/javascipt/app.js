@@ -42,7 +42,9 @@ function setCartMap(cartItems) {
 
   const userId = getUserId();
 
-  cartMap[userId] = cartItems;
+  if (userId) {
+    cartMap[userId] = cartItems;
+  }
   localStorage.setItem("cartMap", JSON.stringify(cartMap));
 }
 
